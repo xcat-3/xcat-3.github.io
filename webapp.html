@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>HumanX Phantoms</title>
+		
+		<style>
+			body { margin: 0; }
+
+		</style>
+		<script type="module" crossorigin src="/assets/index-b7ae2daf.js"></script>
+		<link rel="stylesheet" href="/assets/index-e57ba593.css">
+	</head>
+	<body>
+		<section class="container">
+			<section class="controls">
+				<form id="form" action="">
+					<label for="sex">
+						<span> Select Sex:</span>
+						<select name="sex">
+							<option> -- Select Gender -- </option>
+							<option value="male">Male</option>
+							<option value="female">Female</option>
+						</select>
+					</label>
+
+					<label for="race">
+						<span> Select Race: </span>
+						<select name="race">
+							<option> -- Select Race -- </option>
+							<!-- <option value="white" hidden>White/Caucasian</option>
+							<option value="black">Black/African American</option>
+							<option value="asian">Asian</option>
+							<option value="others">Others</option> -->
+						</select>
+					</label>
+
+
+					<label for="bmi">
+						<span> Select BMI: </span>
+						<select name="bmi">
+							<option> -- Select BMI -- </option>
+							<!-- <option value="underweight"> Underweight (18.5 and less) </option>
+							<option value="normal"> Normal (18.5-24.9) </option>
+							<option value="overweight"> Overweight (25-29.9) </option>
+							<option value="obese"> Obese (30 and more) </option> -->
+						</select>
+					</label>
+
+					<label for="age">
+						<span>Enter Age:</span>
+						<select name="age">
+							<option> -- Select Age -- </option>
+							<!-- <option value="0-5">0-5</option> -->
+						</select>
+					</label>
+
+					<button type="submit">Retrieve</button>
+				</form>
+				<div class="details" id="details" style="display: none !important;" >
+					<span id="no-of-phantoms" hidden> No. of phantoms found: <span id="number-of-models"> </span></span>
+					<div class="buttons">
+						<button id="next-model" hidden>Next</button>
+						<button id="prev-model" hidden>Previous</button>
+					</div>
+					<!-- <h3>Controls</h3> -->
+					<span>
+						<input type="checkbox" id="enable-drag" checked>
+						<label for="enable-drag">Enable Drag</label>
+					</span>
+						<div class="buttons">
+						<button id="reset">Reset</button>
+						<button id="reset-camera">Reset Camera</button>
+					</div>
+					<div >
+						<span> No. of Structures: <span id="number-of-structures"> </span></span> <br>
+						<!-- <label for="structures">Missing Structures</label> -->
+						<select id="structures">
+							<option>-- Missing Structures-- </option>
+						</select>
+					</div>
+
+				</div>
+				<div class="citation" hidden>
+					<span>
+						If you use this tool, please cite it as follows:<br>
+						...
+					</span>
+				</div>
+			</section>
+
+			<section class="model">
+				<div id="logo">
+					<img src="static/cvit-logo-trpnt-150x68.png" alt="CVIT LOgo">
+				</div>
+				<div id="loading" class="loader"></div>
+
+
+
+				<div id="phantom-id">
+					<span id="active-mesh-container" style="display: none;">Selected Organ: <span id="active-mesh"></span> </span><br>
+					<span>Phantom ID: <span id="phantom-id-value">00001</span></span>
+				</div>
+
+				<canvas id="canvas"></canvas>
+			</section>
+
+		</section>
+		
+	</body>
+</html>

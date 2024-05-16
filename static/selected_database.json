@@ -1,0 +1,36 @@
+{
+    "male": {
+      "white": {
+        "normal": {
+          "80": ["Phantom_01"]
+        },
+        "overweight": {
+          "63": [
+            "Phantom_02",
+            "Phantom_03"
+          ],
+          "43": ["Phantom_04"]
+        },
+        "obese": {
+          "33": ["Phantom_05"],
+          "66": ["Phantom_06"]
+        }
+      },
+      "black": {
+        "overweight": { "68": ["Phantom_07"] },
+        "obese": {
+          "66": ["Phantom_08"]
+        }
+      }
+    },
+    "female": {
+      "white": {
+        "overweight": { "76": ["Phantom_09"] },
+        "obese": {
+          "65": ["Phantom_10"],
+          "58": ["Phantom_11"]
+        }
+      }
+    }
+  }
+  
