@@ -1,0 +1,368 @@
+{
+    "male": {
+        "white": {
+            "normal": {
+                "72": [
+                    "Phantom_0"
+                ],
+                "75": [
+                    "Phantom_1"
+                ],
+                "28": [
+                    "Phantom_2"
+                ],
+                "83": [
+                    "Phantom_3"
+                ],
+                "17": [
+                    "Phantom_4"
+                ]
+            },
+            "overweight": {
+                "73": [
+                    "Phantom_5"
+                ],
+                "47": [
+                    "Phantom_6"
+                ],
+                "24": [
+                    "Phantom_7"
+                ],
+                "79": [
+                    "Phantom_8"
+                ],
+                "68": [
+                    "Phantom_9"
+                ]
+            },
+            "obese": {
+                "63": [
+                    "Phantom_10"
+                ],
+                "53": [
+                    "Phantom_11"
+                ],
+                "70": [
+                    "Phantom_12"
+                ],
+                "25": [
+                    "Phantom_13"
+                ]
+            }
+        },
+        "asian": {
+            "underweight": {
+                "27": [
+                    "Phantom_14"
+                ]
+            },
+            "normal": {
+                "68": [
+                    "Phantom_15"
+                ],
+                "52": [
+                    "Phantom_16"
+                ],
+                "77": [
+                    "Phantom_17"
+                ],
+                "81": [
+                    "Phantom_18"
+                ]
+            },
+            "overweight": {
+                "68": [
+                    "Phantom_19"
+                ],
+                "45": [
+                    "Phantom_20"
+                ],
+                "77": [
+                    "Phantom_21"
+                ]
+            },
+            "obese": {
+                "64": [
+                    "Phantom_22"
+                ],
+                "61": [
+                    "Phantom_23"
+                ]
+            }
+        },
+        "black": {
+            "normal": {
+                "70": [
+                    "Phantom_24"
+                ],
+                "59": [
+                    "Phantom_25"
+                ],
+                "52": [
+                    "Phantom_26"
+                ]
+            },
+            "overweight": {
+                "28": [
+                    "Phantom_27"
+                ],
+                "67": [
+                    "Phantom_28"
+                ],
+                "24": [
+                    "Phantom_29"
+                ],
+                "72": [
+                    "Phantom_30"
+                ],
+                "70": [
+                    "Phantom_31"
+                ],
+                "61": [
+                    "Phantom_32"
+                ]
+            },
+            "obese": {
+                "80": [
+                    "Phantom_33"
+                ],
+                "68": [
+                    "Phantom_34"
+                ],
+                "25": [
+                    "Phantom_35"
+                ],
+                "28": [
+                    "Phantom_36"
+                ],
+                "60": [
+                    "Phantom_37"
+                ]
+            }
+        },
+        "other": {
+            "normal": {
+                "45": [
+                    "Phantom_38"
+                ],
+                "89": [
+                    "Phantom_39"
+                ]
+            },
+            "overweight": {
+                "76": [
+                    "Phantom_40"
+                ],
+                "77": [
+                    "Phantom_41"
+                ],
+                "47": [
+                    "Phantom_42"
+                ]
+            },
+            "obese": {
+                "20": [
+                    "Phantom_43"
+                ],
+                "75": [
+                    "Phantom_44"
+                ],
+                "52": [
+                    "Phantom_45"
+                ],
+                "43": [
+                    "Phantom_46"
+                ]
+            }
+        },
+        "native": {
+            "normal": {
+                "69": [
+                    "Phantom_47"
+                ]
+            },
+            "overweight": {
+                "78": [
+                    "Phantom_48"
+                ]
+            },
+            "obese": {
+                "18": [
+                    "Phantom_49"
+                ]
+            }
+        },
+        "pacific": {
+            "overweight": {
+                "73": [
+                    "Phantom_50"
+                ]
+            },
+            "obese": {
+                "60": [
+                    "Phantom_51"
+                ]
+            }
+        }
+    },
+    "female": {
+        "white": {
+            "normal": {
+                "18": [
+                    "Phantom_52"
+                ],
+                "26": [
+                    "Phantom_53"
+                ],
+                "15": [
+                    "Phantom_54"
+                ]
+            },
+            "overweight": {
+                "78": [
+                    "Phantom_55"
+                ],
+                "33": [
+                    "Phantom_56"
+                ],
+                "49": [
+                    "Phantom_57"
+                ]
+            },
+            "obese": {
+                "68": [
+                    "Phantom_58"
+                ],
+                "83": [
+                    "Phantom_59"
+                ],
+                "64": [
+                    "Phantom_60"
+                ],
+                "69": [
+                    "Phantom_61"
+                ],
+                "67": [
+                    "Phantom_62"
+                ],
+                "24": [
+                    "Phantom_63"
+                ],
+                "76": [
+                    "Phantom_64"
+                ],
+                "71": [
+                    "Phantom_65"
+                ]
+            }
+        },
+        "asian": {
+            "underweight": {
+                "16": [
+                    "Phantom_66"
+                ]
+            },
+            "normal": {
+                "48": [
+                    "Phantom_67"
+                ],
+                "72": [
+                    "Phantom_68"
+                ],
+                "74": [
+                    "Phantom_69"
+                ],
+                "22": [
+                    "Phantom_70"
+                ],
+                "41": [
+                    "Phantom_71"
+                ],
+                "76": [
+                    "Phantom_72"
+                ],
+                "80": [
+                    "Phantom_73"
+                ]
+            },
+            "overweight": {
+                "57": [
+                    "Phantom_74"
+                ]
+            },
+            "obese": {
+                "74": [
+                    "Phantom_75"
+                ]
+            }
+        },
+        "black": {
+            "underweight": {
+                "37": [
+                    "Phantom_76"
+                ]
+            },
+            "normal": {
+                "25": [
+                    "Phantom_77"
+                ]
+            },
+            "overweight": {
+                "22": [
+                    "Phantom_78"
+                ],
+                "55": [
+                    "Phantom_79"
+                ],
+                "26": [
+                    "Phantom_80"
+                ],
+                "77": [
+                    "Phantom_81"
+                ],
+                "74": [
+                    "Phantom_82"
+                ],
+                "59": [
+                    "Phantom_83"
+                ]
+            },
+            "obese": {
+                "52": [
+                    "Phantom_84"
+                ],
+                "50": [
+                    "Phantom_85"
+                ],
+                "51": [
+                    "Phantom_86"
+                ],
+                "71": [
+                    "Phantom_87"
+                ],
+                "66": [
+                    "Phantom_88"
+                ]
+            }
+        },
+        "other": {
+            "underweight": {
+                "36": [
+                    "Phantom_89"
+                ]
+            },
+            "normal": {
+                "45": [
+                    "Phantom_90"
+                ]
+            }
+        },
+        "native": {
+            "obese": {
+                "64": [
+                    "Phantom_91"
+                ]
+            }
+        }
+    }
+}
