@@ -7,6 +7,31 @@
 		<style>
 			body { margin: 0; }
 
+			@media (max-width: 768px) {
+				.container {
+					flex-direction: column !important;
+					height: auto !important;
+				}
+				.controls {
+					width: 100% !important;
+					min-width: unset !important;
+					max-width: unset !important;
+					height: auto !important;
+					overflow-y: visible !important;
+					border-right: none !important;
+					border-bottom: 1px solid #ccc;
+					padding: 16px !important;
+				}
+				.model {
+					width: 100% !important;
+					height: 60vw !important;
+					min-height: 280px !important;
+				}
+				#canvas {
+					width: 100% !important;
+					height: 100% !important;
+				}
+			}
 		</style>
 		<script type="module" crossorigin src="/assets/index-b8abbb2a.js"></script>
 		<link rel="stylesheet" href="/assets/index-76958e83.css">
