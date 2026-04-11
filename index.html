@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-MDGZ759889"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -19,15 +18,11 @@
 
   <title>XCAT-3</title>
   <link rel="icon" href="https://cvit.duke.edu/files/2021/07/cropped-icon-cvit-32x32.jpg" sizes="32x32">
-
-  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
   <script defer src="static/js/fontawesome.all.min.js"></script>
 
   <style>
-    /* ── Reset & base ──────────────────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
@@ -40,7 +35,6 @@
     a { color: #4fc3f7; text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    /* ── Top nav ───────────────────────────────────────────────────────────── */
     .topnav {
       background: #040b18;
       border-bottom: 1px solid #1e3a6e;
@@ -59,10 +53,7 @@
       padding: 16px 0;
       letter-spacing: 0.03em;
     }
-    .topnav-tabs {
-      display: flex;
-      gap: 4px;
-    }
+    .topnav-tabs { display: flex; gap: 4px; }
     .tab-btn {
       background: transparent;
       border: none;
@@ -78,18 +69,15 @@
     .tab-btn:hover { color: #b3e5fc; }
     .tab-btn.active { color: #4fc3f7; border-bottom-color: #4fc3f7; }
 
-    /* ── Sections ──────────────────────────────────────────────────────────── */
     .tab-section { display: none; }
     .tab-section.active { display: block; }
 
-    /* ── Shared content wrapper ────────────────────────────────────────────── */
     .content-wrap {
       max-width: 960px;
       margin: 0 auto;
       padding: 48px 24px 80px;
     }
 
-    /* ── Hero card ─────────────────────────────────────────────────────────── */
     .hero-card {
       background: linear-gradient(135deg, #0a1628 0%, #0d2347 50%, #0a1628 100%);
       border: 1px solid #1e3a6e;
@@ -136,7 +124,6 @@
     }
     .btn:hover { background: #2a5298; border-color: #4fc3f7; text-decoration: none; }
 
-    /* ── Section title ─────────────────────────────────────────────────────── */
     .section-title {
       font-size: 1.2rem;
       font-weight: 700;
@@ -146,7 +133,6 @@
       margin: 40px 0 20px;
     }
 
-    /* ── Card ──────────────────────────────────────────────────────────────── */
     .card {
       background: #0d1f3c;
       border: 1px solid #1e3a6e;
@@ -154,7 +140,6 @@
       padding: 28px 32px;
     }
 
-    /* ── Abstract ──────────────────────────────────────────────────────────── */
     .abstract-text {
       font-size: 0.92rem;
       color: #b0bec5;
@@ -162,7 +147,6 @@
     }
     .abstract-text a { color: #4fc3f7; }
 
-    /* ── 3D viewer ─────────────────────────────────────────────────────────── */
     .viewer-frame {
       width: 100%;
       height: 600px;
@@ -176,13 +160,6 @@
       text-align: center;
     }
 
-    /* ── Phantom SVG ───────────────────────────────────────────────────────── */
-    .phantom-svg {
-      width: 100%;
-      border-radius: 10px;
-    }
-
-    /* ── BibTeX ────────────────────────────────────────────────────────────── */
     pre {
       background: #040b18;
       border: 1px solid #1e3a6e;
@@ -194,7 +171,6 @@
       line-height: 1.7;
     }
 
-    /* ── Motion section ────────────────────────────────────────────────────── */
     .motion-hero {
       background: linear-gradient(135deg, #0a1628 0%, #0d2347 50%, #0a1628 100%);
       border: 1px solid #1e3a6e;
@@ -213,7 +189,6 @@
     }
     .motion-hero p { color: #90caf9; font-size: 1rem; }
 
-    /* Case selector */
     .case-selector-wrap {
       display: flex;
       align-items: center;
@@ -240,7 +215,6 @@
     }
     select:focus { border-color: #4fc3f7; }
 
-    /* Sliders */
     .sliders-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -292,10 +266,7 @@
       line-height: 1.5;
     }
 
-    /* GIF viewer */
-    .gif-viewer {
-      text-align: center;
-    }
+    .gif-viewer { text-align: center; }
     .gif-viewer img {
       max-width: 100%;
       border-radius: 10px;
@@ -312,26 +283,15 @@
       margin-top: 14px;
     }
 
-    /* Clinical table */
     .table-wrap { overflow-x: auto; }
     table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
     thead tr { background: #1e3a6e; }
-    thead th {
-      padding: 12px 16px;
-      text-align: left;
-      color: #81d4fa;
-      font-weight: 700;
-    }
+    thead th { padding: 12px 16px; text-align: left; color: #81d4fa; font-weight: 700; }
     tbody tr { border-bottom: 1px solid #1a2d50; transition: background 0.15s; }
     tbody tr:hover { background: #0f2240; }
     tbody td { padding: 11px 16px; color: #cfd8dc; }
-    tbody td:first-child, tbody td:nth-child(2) {
-      color: #4fc3f7;
-      font-weight: 700;
-      white-space: nowrap;
-    }
+    tbody td:first-child, tbody td:nth-child(2) { color: #4fc3f7; font-weight: 700; white-space: nowrap; }
 
-    /* ── Footer ────────────────────────────────────────────────────────────── */
     footer {
       background: #040b18;
       border-top: 1px solid #1e3a6e;
@@ -340,9 +300,7 @@
       font-size: 0.82rem;
       color: #37474f;
     }
-    footer a { color: #546e7a; }
 
-    /* ── Responsive ────────────────────────────────────────────────────────── */
     @media (max-width: 640px) {
       .hero-card, .motion-hero { padding: 32px 20px; }
       .hero-card h1, .motion-hero h1 { font-size: 1.5rem; }
@@ -354,7 +312,6 @@
 </head>
 <body>
 
-  <!-- ── Top navigation ──────────────────────────────────────────────────── -->
   <nav class="topnav">
     <div class="topnav-brand">🫁 XCAT-3</div>
     <div class="topnav-tabs">
@@ -363,17 +320,11 @@
     </div>
   </nav>
 
-
-  <!-- ════════════════════════════════════════════════════════════════════════
-       PHANTOMS TAB
-  ════════════════════════════════════════════════════════════════════════════ -->
   <div id="tab-phantoms" class="tab-section active">
     <div class="content-wrap">
 
-      <!-- Hero -->
       <div class="hero-card">
         <h1>XCAT-3: A Comprehensive Library of Personalized Digital Twins Derived from CT Scans</h1>
-
         <div class="authors">
           <a href="https://lavsendahal.github.io/" target="_blank">Lavsen Dahal</a>,
           <a href="#" target="_blank">Mobina Ghojoghnejad</a>,
@@ -390,13 +341,11 @@
           <a href="https://scholars.duke.edu/person/joseph.lo" target="_blank">Joseph Y. Lo</a><sup>+</sup>,
           <a href="https://scholars.duke.edu/person/paul.segars" target="_blank">W. Paul Segars</a><sup>+</sup>
         </div>
-
         <div class="affiliation">
           Center for Virtual Imaging Trials · Carl E. Ravin Advanced Imaging Laboratories<br>
           Department of Radiology · Duke University School of Medicine · Durham, NC 27708
           <br><small><sup>+</sup>Co-Senior Authors</small>
         </div>
-
         <div class="btn-row">
           <a class="btn" href="https://www.sciencedirect.com/science/article/abs/pii/S1361841525001835" target="_blank">
             <i class="fas fa-file-pdf"></i> Paper
@@ -410,7 +359,6 @@
         </div>
       </div>
 
-      <!-- Abstract -->
       <div class="section-title">Abstract</div>
       <div class="card">
         <p class="abstract-text">
@@ -424,7 +372,6 @@
         </p>
       </div>
 
-      <!-- 3D Viewer -->
       <div class="section-title">Interactive Anatomy Display</div>
       <div class="card" style="padding: 16px;">
         <iframe class="viewer-frame" src="webapp.html"></iframe>
@@ -433,7 +380,6 @@
         </p>
       </div>
 
-      <!-- Phantom diversity SVG -->
       <div class="section-title">Phantom Diversity</div>
       <div style="background:#f5f7fa; border-radius:14px; padding:16px; text-align:center;">
         <img src="static/svg/phantoms_examples_with_height.svg"
@@ -444,48 +390,38 @@
         </p>
       </div>
 
-      <!-- BibTeX -->
       <div class="section-title">BibTeX</div>
       <p style="font-size:0.9rem; color:#90caf9; margin-bottom:16px;">
         If you find this work useful, please consider citing:
       </p>
       <pre>@article{dahal2025xcat,
-  title   = {XCAT 3.0: A comprehensive library of personalized digital twins derived from CT scans},
-  author  = {Dahal, Lavsen and Ghojoghnejad, Mobina and Vancoillie, Liesbeth and
-             Ghosh, Dhrubajyoti and Bhandari, Yubraj and Kim, David and Ho, Fong Chi and
-             Tushar, Fakrul Islam and Luo, Sheng and Lafata, Kyle J and others},
-  journal = {Medical Image Analysis},
-  pages   = {103636},
-  year    = {2025},
+  title     = {XCAT 3.0: A comprehensive library of personalized digital twins derived from CT scans},
+  author    = {Dahal, Lavsen and Ghojoghnejad, Mobina and Vancoillie, Liesbeth and
+               Ghosh, Dhrubajyoti and Bhandari, Yubraj and Kim, David and Ho, Fong Chi and
+               Tushar, Fakrul Islam and Luo, Sheng and Lafata, Kyle J and others},
+  journal   = {Medical Image Analysis},
+  pages     = {103636},
+  year      = {2025},
   publisher = {Elsevier}
 }</pre>
 
     </div>
   </div>
 
-
-  <!-- ════════════════════════════════════════════════════════════════════════
-       MOTION TAB
-  ════════════════════════════════════════════════════════════════════════════ -->
   <div id="tab-motion" class="tab-section">
     <div class="content-wrap">
 
-      <!-- Hero -->
       <div class="motion-hero">
         <h1>🫁 Respiratory Motion Explorer</h1>
         <p>Patient-specific parametric breathing simulation inspired by XCAT-style NURBS modelling.</p>
       </div>
 
-      <!-- Controls -->
       <div class="section-title">Breathing Parameters</div>
       <div class="card">
-
-        <!-- Case selector -->
         <div class="case-selector-wrap">
           <label for="case-select">Patient Case</label>
           <select id="case-select" onchange="onSliderChange()">
             <option value="XCAT3_Chest_0001">XCAT3_Chest_0001</option>
-            <!-- Add more cases here as they are generated -->
           </select>
         </div>
 
@@ -494,13 +430,10 @@
         </p>
 
         <div class="sliders-grid">
-
-          <!-- Diaphragm -->
           <div>
             <div class="knob-label">Diaphragm Excursion</div>
             <div class="knob-value" id="diaph-display">15 mm</div>
-            <input type="range" id="diaph-slider" min="0" max="4" step="1" value="2"
-                   oninput="onSliderChange()" />
+            <input type="range" id="diaph-slider" min="0" max="4" step="1" value="2" oninput="onSliderChange()" />
             <div class="tick-labels">
               <span>5 mm</span><span>10 mm</span><span>15 mm</span><span>20 mm</span><span>25 mm</span>
             </div>
@@ -509,13 +442,10 @@
               Low → shallow / restricted &nbsp;·&nbsp; High → deep / COPD-like.
             </p>
           </div>
-
-          <!-- Rib scale -->
           <div>
             <div class="knob-label">Rib Rotation Scale</div>
             <div class="knob-value" id="rib-display">1.00</div>
-            <input type="range" id="rib-slider" min="0" max="4" step="1" value="4"
-                   oninput="onSliderChange()" />
+            <input type="range" id="rib-slider" min="0" max="4" step="1" value="4" oninput="onSliderChange()" />
             <div class="tick-labels">
               <span>0.10</span><span>0.30</span><span>0.50</span><span>0.75</span><span>1.00</span>
             </div>
@@ -524,18 +454,15 @@
               Low → belly breathing &nbsp;·&nbsp; High → chest-wall-dominant.
             </p>
           </div>
-
         </div>
       </div>
 
-      <!-- GIF viewer -->
       <div class="section-title">Motion Visualization</div>
       <div class="card gif-viewer">
         <img id="gif-display" src="" alt="Select parameters above" />
         <div id="pattern-badge" class="pattern-badge">—</div>
       </div>
 
-      <!-- Clinical reference table -->
       <div class="section-title">Clinical Reference — Parameter Guide</div>
       <div class="card" style="padding: 0; overflow: hidden;">
         <div class="table-wrap">
@@ -566,16 +493,11 @@
     </div>
   </div>
 
-
-  <!-- ── Footer ─────────────────────────────────────────────────────────── -->
   <footer>
     &copy; Lavsen Dahal | Duke University
   </footer>
 
-
-  <!-- ── JavaScript ─────────────────────────────────────────────────────── -->
   <script>
-    // ── Tab switching ────────────────────────────────────────────────────────
     function showTab(name) {
       document.querySelectorAll(".tab-section").forEach(s => s.classList.remove("active"));
       document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
@@ -585,10 +507,8 @@
       });
     }
 
-    // ── Motion explorer ──────────────────────────────────────────────────────
     const DIAPH_VALUES = [5, 10, 15, 20, 25];
     const RIB_VALUES   = [0.10, 0.30, 0.50, 0.75, 1.00];
-
     const GIF_BASE_URL = "gifs";
 
     const LABELS = {
@@ -626,10 +546,9 @@
     }
 
     function onSliderChange() {
-      const di   = parseInt(document.getElementById("diaph-slider").value);
-      const ri   = parseInt(document.getElementById("rib-slider").value);
+      const di     = parseInt(document.getElementById("diaph-slider").value);
+      const ri     = parseInt(document.getElementById("rib-slider").value);
       const caseId = document.getElementById("case-select").value;
-
       const diaph  = DIAPH_VALUES[di];
       const rib    = RIB_VALUES[ri];
       const folder = folderName(di, ri);
@@ -640,13 +559,11 @@
       document.getElementById("pattern-badge").textContent =
         `${label}  ·  diaph=${diaph} mm  ·  rib=${rib.toFixed(2)}`;
 
-      const gifUrl = `${GIF_BASE_URL}/${caseId}/${folder}/motion_animation.gif`;
-      const img    = document.getElementById("gif-display");
-      img.src      = gifUrl;
-      img.alt      = label;
+      const img = document.getElementById("gif-display");
+      img.src   = `${GIF_BASE_URL}/${caseId}/${folder}/motion_animation.gif`;
+      img.alt   = label;
     }
 
-    // Init
     onSliderChange();
   </script>
 
