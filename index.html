@@ -1,367 +1,653 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-MDGZ759889"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MDGZ759889"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-MDGZ759889');
+  </script>
 
-  gtag('config', 'G-MDGZ759889');
-</script>
-
-  
   <meta charset="utf-8">
-  <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
-  <!-- Replace the content tag with appropriate information -->
-  <meta name="description" content="XCAT 3.0 Library : Digital Twins">
-  <meta property="og:title" content="A comprehensive library of person specific digital twins."/>
-  <meta property="og:description" content="XCAT 3.0 Library : Digital Twins"/>
-  <!-- <meta property="og:url" content="URL OF THE WEBSITE"/> -->
-  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
-  <meta property="og:image" content="static/image/your_banner_image.png" />
-  <meta property="og:image:width" content="1200"/>
-  <meta property="og:image:height" content="630"/>
-
-
-  <meta name="twitter:title" content="TWITTER BANNER TITLE META TAG">
-  <meta name="twitter:description" content="TWITTER BANNER DESCRIPTION META TAG">
-  <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X600-->
-  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <!-- Keywords for your paper to be indexed by-->
-  <meta name="keywords" content="digital twins, computational phantoms, deep learning">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="XCAT-3: Personalized Digital Twins and Respiratory Motion Phantoms from CT Scans">
+  <meta property="og:title" content="XCAT-3: Personalized Digital Twins derived from CT Scans"/>
+  <meta property="og:description" content="2500+ computational phantoms with parametric respiratory motion modelling"/>
+  <meta name="keywords" content="digital twins, computational phantoms, deep learning, respiratory motion, XCAT">
 
+  <title>XCAT-3</title>
+  <link rel="icon" href="https://cvit.duke.edu/files/2021/07/cropped-icon-cvit-32x32.jpg" sizes="32x32">
 
-  <title>XCAT-3 Phantoms</title>
-  <!-- <link rel="icon" type="image/x-icon" href="static/images/favicon.ico"> -->
-  <link rel="icon" type="image/x-icon" href="https://cvit.duke.edu/files/2021/07/cropped-icon-cvit-32x32.jpg" sizes="32x32">
-  <link rel="icon" type="image/x-icon" href="https://cvit.duke.edu/files/2021/07/cropped-icon-cvit-192x192.jpg" sizes="192x192">
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-  rel="stylesheet">
-
-  <link rel="stylesheet" href="static/css/bulma.min.css">
-  <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
-  <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <link rel="stylesheet" href="static/css/index.css">
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
   <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script src="static/js/bulma-carousel.min.js"></script>
-  <script src="static/js/bulma-slider.min.js"></script>
-  <script src="static/js/index.js"></script>
-</head>
 
+  <style>
+    /* ── Reset & base ──────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #060d1f;
+      color: #e8eaf6;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      min-height: 100vh;
+    }
+
+    a { color: #4fc3f7; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* ── Top nav ───────────────────────────────────────────────────────────── */
+    .topnav {
+      background: #040b18;
+      border-bottom: 1px solid #1e3a6e;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .topnav-brand {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #4fc3f7;
+      padding: 16px 0;
+      letter-spacing: 0.03em;
+    }
+    .topnav-tabs {
+      display: flex;
+      gap: 4px;
+    }
+    .tab-btn {
+      background: transparent;
+      border: none;
+      color: #78909c;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 18px 20px;
+      border-bottom: 3px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      font-family: inherit;
+    }
+    .tab-btn:hover { color: #b3e5fc; }
+    .tab-btn.active { color: #4fc3f7; border-bottom-color: #4fc3f7; }
+
+    /* ── Sections ──────────────────────────────────────────────────────────── */
+    .tab-section { display: none; }
+    .tab-section.active { display: block; }
+
+    /* ── Shared content wrapper ────────────────────────────────────────────── */
+    .content-wrap {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* ── Hero card ─────────────────────────────────────────────────────────── */
+    .hero-card {
+      background: linear-gradient(135deg, #0a1628 0%, #0d2347 50%, #0a1628 100%);
+      border: 1px solid #1e3a6e;
+      border-radius: 16px;
+      padding: 52px 48px 44px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .hero-card h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, #4fc3f7, #81d4fa, #b3e5fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.3;
+      margin-bottom: 20px;
+    }
+    .authors {
+      font-size: 0.9rem;
+      color: #90caf9;
+      line-height: 2;
+      margin-bottom: 10px;
+    }
+    .authors a { color: #81d4fa; }
+    .affiliation {
+      font-size: 0.82rem;
+      color: #546e7a;
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+    .btn-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #1e3a6e;
+      color: #e3f2fd;
+      border: 1px solid #2a5298;
+      border-radius: 20px;
+      padding: 8px 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .btn:hover { background: #2a5298; border-color: #4fc3f7; text-decoration: none; }
+
+    /* ── Section title ─────────────────────────────────────────────────────── */
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #e3f2fd;
+      border-left: 4px solid #4fc3f7;
+      padding-left: 14px;
+      margin: 40px 0 20px;
+    }
+
+    /* ── Card ──────────────────────────────────────────────────────────────── */
+    .card {
+      background: #0d1f3c;
+      border: 1px solid #1e3a6e;
+      border-radius: 14px;
+      padding: 28px 32px;
+    }
+
+    /* ── Abstract ──────────────────────────────────────────────────────────── */
+    .abstract-text {
+      font-size: 0.92rem;
+      color: #b0bec5;
+      line-height: 1.8;
+    }
+    .abstract-text a { color: #4fc3f7; }
+
+    /* ── 3D viewer ─────────────────────────────────────────────────────────── */
+    .viewer-frame {
+      width: 100%;
+      height: 600px;
+      border: none;
+      border-radius: 10px;
+    }
+    .viewer-note {
+      margin-top: 12px;
+      font-size: 0.8rem;
+      color: #546e7a;
+      text-align: center;
+    }
+
+    /* ── Phantom SVG ───────────────────────────────────────────────────────── */
+    .phantom-svg {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    /* ── BibTeX ────────────────────────────────────────────────────────────── */
+    pre {
+      background: #040b18;
+      border: 1px solid #1e3a6e;
+      border-radius: 10px;
+      padding: 20px 24px;
+      font-size: 0.8rem;
+      color: #90caf9;
+      overflow-x: auto;
+      line-height: 1.7;
+    }
+
+    /* ── Motion section ────────────────────────────────────────────────────── */
+    .motion-hero {
+      background: linear-gradient(135deg, #0a1628 0%, #0d2347 50%, #0a1628 100%);
+      border: 1px solid #1e3a6e;
+      border-radius: 16px;
+      padding: 44px 48px 36px;
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    .motion-hero h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      background: linear-gradient(90deg, #4fc3f7, #81d4fa, #b3e5fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 12px;
+    }
+    .motion-hero p { color: #90caf9; font-size: 1rem; }
+
+    /* Case selector */
+    .case-selector-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .case-selector-wrap label {
+      font-size: 0.85rem;
+      color: #78909c;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    select {
+      background: #040b18;
+      color: #e3f2fd;
+      border: 1px solid #2a5298;
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-size: 0.88rem;
+      font-family: inherit;
+      cursor: pointer;
+      outline: none;
+    }
+    select:focus { border-color: #4fc3f7; }
+
+    /* Sliders */
+    .sliders-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-top: 24px;
+    }
+    .knob-label {
+      font-size: 0.8rem;
+      color: #78909c;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 6px;
+    }
+    .knob-value {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #4fc3f7;
+      margin-bottom: 12px;
+    }
+    input[type="range"] {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      background: #1e3a6e;
+      border-radius: 3px;
+      outline: none;
+      cursor: pointer;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #4fc3f7;
+      box-shadow: 0 0 8px rgba(79,195,247,0.6);
+      cursor: pointer;
+    }
+    .tick-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 8px;
+      font-size: 0.72rem;
+      color: #546e7a;
+    }
+    .knob-desc {
+      margin-top: 10px;
+      font-size: 0.78rem;
+      color: #546e7a;
+      line-height: 1.5;
+    }
+
+    /* GIF viewer */
+    .gif-viewer {
+      text-align: center;
+    }
+    .gif-viewer img {
+      max-width: 100%;
+      border-radius: 10px;
+      border: 1px solid #1e3a6e;
+    }
+    .pattern-badge {
+      display: inline-block;
+      background: #1e3a6e;
+      color: #81d4fa;
+      border-radius: 20px;
+      padding: 5px 16px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-top: 14px;
+    }
+
+    /* Clinical table */
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+    thead tr { background: #1e3a6e; }
+    thead th {
+      padding: 12px 16px;
+      text-align: left;
+      color: #81d4fa;
+      font-weight: 700;
+    }
+    tbody tr { border-bottom: 1px solid #1a2d50; transition: background 0.15s; }
+    tbody tr:hover { background: #0f2240; }
+    tbody td { padding: 11px 16px; color: #cfd8dc; }
+    tbody td:first-child, tbody td:nth-child(2) {
+      color: #4fc3f7;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* ── Footer ────────────────────────────────────────────────────────────── */
+    footer {
+      background: #040b18;
+      border-top: 1px solid #1e3a6e;
+      text-align: center;
+      padding: 28px 24px;
+      font-size: 0.82rem;
+      color: #37474f;
+    }
+    footer a { color: #546e7a; }
+
+    /* ── Responsive ────────────────────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      .hero-card, .motion-hero { padding: 32px 20px; }
+      .hero-card h1, .motion-hero h1 { font-size: 1.5rem; }
+      .sliders-grid { grid-template-columns: 1fr; gap: 28px; }
+      .topnav { padding: 0 16px; }
+      .topnav-brand { font-size: 0.95rem; }
+    }
+  </style>
+</head>
 <body>
 
+  <!-- ── Top navigation ──────────────────────────────────────────────────── -->
+  <nav class="topnav">
+    <div class="topnav-brand">🫁 XCAT-3</div>
+    <div class="topnav-tabs">
+      <button class="tab-btn active" onclick="showTab('phantoms')">Phantoms</button>
+      <button class="tab-btn"        onclick="showTab('motion')">Motion</button>
+    </div>
+  </nav>
 
-  <section class="hero">
-    <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">XCAT-3: A Comprehensive Library of Personalized Digital Twins Derived from CT Scans</h1>
-            <div class="is-size-5 publication-authors">
-              <!-- Paper authors -->
-              <span class="author-block">
-                <a href="https://lavsendahal.github.io/" target="_blank">Lavsen Dahal</a>,</span>
-                <span class="author-block">
-                  <a href="#" target="_blank">Mobina Ghojoghnejad</a>,</span>
-                <span class="author-block">
-                  <a href="#" target="_blank">Liesbeth Vancoillie</a>,</span>
-                  <span class="author-block">
-                    <a href="https://scholars.duke.edu/person/dhrubajyoti.ghosh" target="_blank">Dhrubajyoti Ghosh</a>,
-                  </span>
-                  <span class="author-block">
-                    <a href="#" target="_blank">Yubraj Bhandari</a>,
-                  </span>
-                  <span class="author-block">
-                    <a href="#" target="_blank">David Kim</a>,
-                  </span>
-                  <span class="author-block">
-                    <a href="#" target="_blank">Fong Chi Ho</a>,
-                  </span>
-                  <span class="author-block">
-                    <a href="https://fitushar.netlify.app/" target="_blank">Fakrul Islam Tushar</a>,
-                  </span>
-                  <span class="author-block">
-                    <a href="https://scholars.duke.edu/person/sheng.luo/" target="_blank">Sheng Luo</a>,
-                  </span>
-                  <span class="author-block">
-                    <a href="https://www.kylelafata.com/" target="_blank">Kyle J. Lafata</a>,
-                  </span>
-                  <span class="author-block">
-                    <a href="#" target="_blank">Ehsan Abadi</a>,
-                  </span>
-                  <span class="author-block">
-                    <a href="https://scholars.duke.edu/person/ehsan.samei" target="_blank">Ehsan Samei</a>,
-                  </span><br/>
-                  <span class="author-block">
-                    <a href="https://scholars.duke.edu/person/joseph.lo" target="_blank">Joseph Y. Lo</a><sup>+</sup>,
-                  </span>
-                  <span class="author-block">
-                    <a href="https://scholars.duke.edu/person/paul.segars" target="_blank">W. Paul Segars</a><sup>+</sup>,
-                  </span>
-                  </div>
 
-                  <div class="is-size-5 publication-authors">
-                    <span class="author-block">Center for Virtual Imaging Trials, <br>Carl E. Ravin Advanced Imaging Laboratories, Department of Radiology, <br> Duke University School of Medicine, Durham, NC, 27708, USA</span>
-                    <span class="eql-cntrb"><small><br><sup>+</sup>Indicates Co-Senior Authors</small></span>
-                  </div>
+  <!-- ════════════════════════════════════════════════════════════════════════
+       PHANTOMS TAB
+  ════════════════════════════════════════════════════════════════════════════ -->
+  <div id="tab-phantoms" class="tab-section active">
+    <div class="content-wrap">
 
-                  <div class="column has-text-centered">
-                    <div class="publication-links">
-                         <!-- Arxiv PDF link -->
-                      <span class="link-block">
-                        <a href="https://www.sciencedirect.com/science/article/abs/pii/S1361841525001835" target="_blank"
-                        class="external-link button is-normal is-rounded is-dark">
-                        <span class="icon">
-                          <i class="fas fa-file-pdf"></i>
-                        </span>
-                        <span>Paper</span>
-                      </a>
-                    </span>
+      <!-- Hero -->
+      <div class="hero-card">
+        <h1>XCAT-3: A Comprehensive Library of Personalized Digital Twins Derived from CT Scans</h1>
 
-                    <!-- Supplementary PDF link -->
-                    <!-- <span class="link-block">
-                      <a href="static/pdfs/supplementary_material.pdf" target="_blank"
-                      class="external-link button is-normal is-rounded is-dark">
-                      <span class="icon">
-                        <i class="fas fa-file-pdf"></i>
-                      </span>
-                      <span>Supplementary</span>
-                    </a>
-                  </span> -->
+        <div class="authors">
+          <a href="https://lavsendahal.github.io/" target="_blank">Lavsen Dahal</a>,
+          <a href="#" target="_blank">Mobina Ghojoghnejad</a>,
+          <a href="#" target="_blank">Liesbeth Vancoillie</a>,
+          <a href="https://scholars.duke.edu/person/dhrubajyoti.ghosh" target="_blank">Dhrubajyoti Ghosh</a>,
+          <a href="#" target="_blank">Yubraj Bhandari</a>,
+          <a href="#" target="_blank">David Kim</a>,
+          <a href="#" target="_blank">Fong Chi Ho</a>,
+          <a href="https://fitushar.netlify.app/" target="_blank">Fakrul Islam Tushar</a>,
+          <a href="https://scholars.duke.edu/person/sheng.luo/" target="_blank">Sheng Luo</a>,
+          <a href="https://www.kylelafata.com/" target="_blank">Kyle J. Lafata</a>,
+          <a href="#" target="_blank">Ehsan Abadi</a>,
+          <a href="https://scholars.duke.edu/person/ehsan.samei" target="_blank">Ehsan Samei</a>,
+          <a href="https://scholars.duke.edu/person/joseph.lo" target="_blank">Joseph Y. Lo</a><sup>+</sup>,
+          <a href="https://scholars.duke.edu/person/paul.segars" target="_blank">W. Paul Segars</a><sup>+</sup>
+        </div>
 
-                  <!-- Github link -->
-                  <span class="link-block">
-                    <a href="https://gitlab.oit.duke.edu/cvit-public/dukeseg_public" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
-                </span>
+        <div class="affiliation">
+          Center for Virtual Imaging Trials · Carl E. Ravin Advanced Imaging Laboratories<br>
+          Department of Radiology · Duke University School of Medicine · Durham, NC 27708
+          <br><small><sup>+</sup>Co-Senior Authors</small>
+        </div>
 
-                <!-- ArXiv abstract Link -->
-                <!-- <span class="link-block">
-                  <a href="https://arxiv.org/abs/2405.11133" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span> -->
+        <div class="btn-row">
+          <a class="btn" href="https://www.sciencedirect.com/science/article/abs/pii/S1361841525001835" target="_blank">
+            <i class="fas fa-file-pdf"></i> Paper
+          </a>
+          <a class="btn" href="https://gitlab.oit.duke.edu/cvit-public/dukeseg_public" target="_blank">
+            <i class="fab fa-github"></i> Code
+          </a>
+          <a class="btn" href="https://cvit.duke.edu/resources/" target="_blank">
+            <i class="fas fa-database"></i> Request Phantoms
+          </a>
+        </div>
+      </div>
+
+      <!-- Abstract -->
+      <div class="section-title">Abstract</div>
+      <div class="card">
+        <p class="abstract-text">
+          Virtual Imaging Trials (VIT) offer a cost-effective and scalable approach for evaluating medical imaging technologies.
+          Computational phantoms, which mimic real patient anatomy and physiology, play a central role in VIT. However, current
+          phantom libraries face limitations in sample size and diversity. This study presents a framework for creating realistic
+          computational phantoms using a suite of four deep learning segmentation models, with three forms of automated quality
+          control. The result is a release of over 2,500 computational phantoms with up to 140 structures, available in both
+          voxelized and surface mesh formats. Phantoms may be requested at
+          <a href="https://cvit.duke.edu/resources/" target="_blank">cvit.duke.edu/resources</a>.
+        </p>
+      </div>
+
+      <!-- 3D Viewer -->
+      <div class="section-title">Interactive Anatomy Display</div>
+      <div class="card" style="padding: 16px;">
+        <iframe class="viewer-frame" src="webapp.html"></iframe>
+        <p class="viewer-note">
+          For best experience, use Chrome on a desktop or laptop. Refresh if the viewer does not load.
+        </p>
+      </div>
+
+      <!-- Phantom diversity SVG -->
+      <div class="section-title">Phantom Diversity</div>
+      <div class="card" style="padding: 16px; text-align: center;">
+        <img class="phantom-svg"
+             src="static/svg/phantoms_examples_with_height.svg"
+             alt="Phantoms representing diverse demographics" />
+        <p style="margin-top:12px; font-size:0.82rem; color:#546e7a;">
+          Phantoms representing diverse demographics.
+        </p>
+      </div>
+
+      <!-- BibTeX -->
+      <div class="section-title">BibTeX</div>
+      <pre>@article{dahal2025xcat,
+  title   = {XCAT 3.0: A comprehensive library of personalized digital twins derived from CT scans},
+  author  = {Dahal, Lavsen and Ghojoghnejad, Mobina and Vancoillie, Liesbeth and
+             Ghosh, Dhrubajyoti and Bhandari, Yubraj and Kim, David and Ho, Fong Chi and
+             Tushar, Fakrul Islam and Luo, Sheng and Lafata, Kyle J and others},
+  journal = {Medical Image Analysis},
+  pages   = {103636},
+  year    = {2025},
+  publisher = {Elsevier}
+}</pre>
+
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════════════════════════════════════════════
+       MOTION TAB
+  ════════════════════════════════════════════════════════════════════════════ -->
+  <div id="tab-motion" class="tab-section">
+    <div class="content-wrap">
+
+      <!-- Hero -->
+      <div class="motion-hero">
+        <h1>🫁 Respiratory Motion Explorer</h1>
+        <p>Patient-specific parametric breathing simulation inspired by XCAT-style NURBS modelling.</p>
+      </div>
+
+      <!-- Controls -->
+      <div class="section-title">Breathing Parameters</div>
+      <div class="card">
+
+        <!-- Case selector -->
+        <div class="case-selector-wrap">
+          <label for="case-select">Patient Case</label>
+          <select id="case-select" onchange="onSliderChange()">
+            <option value="CT_CTEAXR_TMP401328_3">CT_CTEAXR_TMP401328_3</option>
+            <!-- Add more cases here as they are generated -->
+          </select>
+        </div>
+
+        <p style="color:#90caf9; font-size:0.88rem; margin-top:18px; line-height:1.6;">
+          Adjust the two knobs to explore different breathing patterns — from end-inspiration to end-expiration.
+        </p>
+
+        <div class="sliders-grid">
+
+          <!-- Diaphragm -->
+          <div>
+            <div class="knob-label">Diaphragm Excursion</div>
+            <div class="knob-value" id="diaph-display">15 mm</div>
+            <input type="range" id="diaph-slider" min="0" max="4" step="1" value="2"
+                   oninput="onSliderChange()" />
+            <div class="tick-labels">
+              <span>5 mm</span><span>10 mm</span><span>15 mm</span><span>20 mm</span><span>25 mm</span>
             </div>
+            <p class="knob-desc">
+              How far the diaphragm moves toward expiration.<br>
+              Low → shallow / restricted &nbsp;·&nbsp; High → deep / COPD-like.
+            </p>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-
-
-<!-- Paper abstract -->
-<section class="section hero is-light">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Abstract</h2>
-        <div class="content has-text-justified">
-          <p>
-            Virtual Imaging Trials (VIT) offer a cost-effective and scalable approach for evaluating medical imaging technologies. Computational phantoms, which mimic real patient anatomy and physiology, play a central role in VIT. However, the current libraries of computational phantoms face limitations, particularly in terms of sample size and diversity. Insufficient representation of the population hampers accurate assessment of imaging technologies across different patient groups. Traditionally, phantoms were created by manual segmentation, which is a laborious and time-consuming task, impeding the expansion of phantom libraries. This study presents a framework for creating realistic computational phantoms using a suite of four deep learning segmentation models, then the organ masks undergo three forms of automated quality control. The final result is the release of over 2500 computational phantoms with up to 140 structures illustrating a sophisticated approach to detailed anatomical modeling. Phantoms are available in both voxelized or surface mesh formats. The framework is combined with an in-house CT scanner simulator to produce realistic CT images. The framework has the potential to advance virtual imaging trials, facilitating comprehensive and reliable evaluations of medical imaging technologies. Phantoms may be requested at <u> <a href="https://cvit.duke.edu/resources/"> https://cvit.duke.edu/resources/</a></u>, code, model weights, and sample CT images are available at <u><a href="https://xcat-3.github.io"> https://xcat-3.github.io</a></u>.           </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End paper abstract -->
-
-
-<!-- Image carousel -->
-<!-- <section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item"> -->
-        <!-- Your image here -->
-        <!-- <img src="static/images/carousel1.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
-      </div>
-      <div class="item"> -->
-        <!-- Your image here -->
-        <!-- <img src="static/images/carousel2.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item"> -->
-        <!-- Your image here -->
-        <!-- <img src="static/images/carousel3.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div> -->
-     <!-- <div class="item"> -->
-      <!-- Your image here -->
-      <!-- <img src="static/images/carousel4.jpg" alt="MY ALT TEXT"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
-    </div>
-  </div>
-</div>
-</div>
-</section> -->
-<!-- End image carousel -->
-
-
-
-
-<!-- Youtube video -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Paper video. -->
-      <h2 class="title is-3">Interactive Anatomy Display</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-full">
-          
-          <div class="publication-video" >
-            Phantom Visualization Tool.
-            <iframe src="webapp.html" frameborder="0" allowfullscreen></iframe>
-          </div>
-          <article class="message is-small">
-            <div>
-              For the best experience, please use a desktop or laptop device with the Chrome browser. If the tool does not load properly, kindly refresh your browser. Thank you!
+          <!-- Rib scale -->
+          <div>
+            <div class="knob-label">Rib Rotation Scale</div>
+            <div class="knob-value" id="rib-display">1.00</div>
+            <input type="range" id="rib-slider" min="0" max="4" step="1" value="4"
+                   oninput="onSliderChange()" />
+            <div class="tick-labels">
+              <span>0.10</span><span>0.30</span><span>0.50</span><span>0.75</span><span>1.00</span>
             </div>
-          </article>
+            <p class="knob-desc">
+              Fraction of maximum rib rotation applied.<br>
+              Low → belly breathing &nbsp;·&nbsp; High → chest-wall-dominant.
+            </p>
+          </div>
+
         </div>
       </div>
-    </div>
-  </div> 
-</section>
-<!-- End youtube video -->
 
+      <!-- GIF viewer -->
+      <div class="section-title">Motion Visualization</div>
+      <div class="card gif-viewer">
+        <img id="gif-display" src="" alt="Select parameters above" />
+        <div id="pattern-badge" class="pattern-badge">—</div>
+      </div>
 
-<!-- Video carousel -->
-<!-- <section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <video poster="" id="video1" autoplay controls muted loop height="100%">
-            Your video file here
-            <source src="static/videos/carousel1.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video2">
-          <video poster="" id="video2" autoplay controls muted loop height="100%">
-            Your video file here
-            <source src="static/videos/carousel2.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video3">
-          <video poster="" id="video3" autoplay controls muted loop height="100%">\
-            Your video file here
-            <source src="static/videos/carousel3.mp4"
-            type="video/mp4">
-          </video>
+      <!-- Clinical reference table -->
+      <div class="section-title">Clinical Reference — Parameter Guide</div>
+      <div class="card" style="padding: 0; overflow: hidden;">
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Diaphragm (mm)</th>
+                <th>Rib Scale</th>
+                <th>Breathing Pattern</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>5</td><td>0.1</td><td>Shallow / restricted (post-op, pain-limited)</td></tr>
+              <tr><td>5</td><td>1.0</td><td>Chest-dominant (diaphragm paresis)</td></tr>
+              <tr><td>8</td><td>0.4</td><td>Quiet resting breathing</td></tr>
+              <tr><td>10</td><td>0.5</td><td>Mild tidal breathing</td></tr>
+              <tr><td>15</td><td>1.0</td><td>Normal tidal breathing ← reference</td></tr>
+              <tr><td>18</td><td>0.3</td><td>COPD-like (limited chest wall, hyperinflated)</td></tr>
+              <tr><td>20</td><td>0.2</td><td>Diaphragm-dominant (COPD / belly breathing)</td></tr>
+              <tr><td>20</td><td>0.9</td><td>Athletic / deep breathing</td></tr>
+              <tr><td>7</td><td>0.4</td><td>Restricted / pulmonary fibrosis</td></tr>
+              <tr><td>25</td><td>1.0</td><td>Forceful exhale / maximum effort</td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
+
     </div>
   </div>
-</section> -->
-<!-- End video carousel -->
 
 
+  <!-- ── Footer ─────────────────────────────────────────────────────────── -->
+  <footer>
+    &copy; Lavsen Dahal | Duke University
+  </footer>
 
 
+  <!-- ── JavaScript ─────────────────────────────────────────────────────── -->
+  <script>
+    // ── Tab switching ────────────────────────────────────────────────────────
+    function showTab(name) {
+      document.querySelectorAll(".tab-section").forEach(s => s.classList.remove("active"));
+      document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+      document.getElementById("tab-" + name).classList.add("active");
+      document.querySelectorAll(".tab-btn").forEach(b => {
+        if (b.textContent.trim().toLowerCase() === name) b.classList.add("active");
+      });
+    }
 
+    // ── Motion explorer ──────────────────────────────────────────────────────
+    const DIAPH_VALUES = [5, 10, 15, 20, 25];
+    const RIB_VALUES   = [0.10, 0.30, 0.50, 0.75, 1.00];
 
-<!-- Paper poster -->
-<!-- <section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
+    // Update this to your GitHub releases base URL once GIFs are uploaded
+    // e.g. "https://github.com/xcat-3/xcat-3.github.io/releases/download/v1.0/gifs"
+    const GIF_BASE_URL = "https://raw.githubusercontent.com/xcat-3/xcat-3.github.io/main/gifs";
 
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-        
-      </div>
-    </div>
-  </section> -->
-<!--End paper poster -->
+    const LABELS = {
+      "d05_r010": "Shallow / post-op (minimal motion)",
+      "d05_r030": "Restricted / fibrosis-like",
+      "d05_r050": "Mild chest, low diaphragm",
+      "d05_r075": "Moderate chest expansion",
+      "d05_r100": "Chest-dominant (diaphragm paresis)",
+      "d10_r010": "Low diaphragm, minimal rib",
+      "d10_r030": "Quiet resting breathing",
+      "d10_r050": "Quiet tidal breathing",
+      "d10_r075": "Moderate tidal breathing",
+      "d10_r100": "Moderate chest + diaphragm",
+      "d15_r010": "Diaphragm-only, normal depth",
+      "d15_r030": "Mixed — moderate diaphragm",
+      "d15_r050": "Mixed tidal breathing",
+      "d15_r075": "Normal tidal breathing",
+      "d15_r100": "Normal tidal (full rib)",
+      "d20_r010": "Diaphragm-dominant (COPD / belly breathing)",
+      "d20_r030": "COPD-like (limited chest wall)",
+      "d20_r050": "Mixed deep breathing",
+      "d20_r075": "Deep / high-capacity breathing",
+      "d20_r100": "Athletic / deep breath",
+      "d25_r010": "Max diaphragm, frozen chest",
+      "d25_r030": "Max diaphragm, minimal rib",
+      "d25_r050": "Max diaphragm, moderate rib",
+      "d25_r075": "Deep forceful breath",
+      "d25_r100": "Forceful exhale (max effort)",
+    };
 
-<!-- Teaser video-->
-<section class="hero teaser">
-  <div class="container is-max-desktop">
-    <div class="hero-body">
-      <img src="static/svg/phantoms_examples_with_height.svg" alt="Phantoms Generation" style="width: 794px; height: 500px; object-fit: cover; object-position: 0% 0;">
+    function folderName(di, ri) {
+      const d = String(DIAPH_VALUES[di]).padStart(2, "0");
+      const r = RIB_VALUES[ri].toFixed(2).replace(".", "");
+      return `d${d}_r${r}`;
+    }
 
-      <h2 class="subtitle has-text-centered">
-        Phantoms representing diverse demographics.
-      </h2>
-    </div>
-  </div>
-</section> 
-<!-- End teaser video -->
+    function onSliderChange() {
+      const di   = parseInt(document.getElementById("diaph-slider").value);
+      const ri   = parseInt(document.getElementById("rib-slider").value);
+      const caseId = document.getElementById("case-select").value;
 
+      const diaph  = DIAPH_VALUES[di];
+      const rib    = RIB_VALUES[ri];
+      const folder = folderName(di, ri);
+      const label  = LABELS[folder] || folder;
 
-<!--BibTex citation -->
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <h2 class="title">BibTeX</h2>
-      <pre><code>@article{dahal2025xcat,
-        title={XCAT 3.0: A comprehensive library of personalized digital twins derived from CT scans},
-        author={Dahal, Lavsen and Ghojoghnejad, Mobina and Vancoillie, Liesbeth and Ghosh, Dhrubajyoti and Bhandari, Yubraj and Kim, David and Ho, Fong Chi and Tushar, Fakrul Islam and Luo, Sheng and Lafata, Kyle J and others},
-        journal={Medical Image Analysis},
-        pages={103636},
-        year={2025},
-        publisher={Elsevier}
-    }</code></pre>
-    </div>
-</section>
-<!--End BibTex citation -->
+      document.getElementById("diaph-display").textContent = `${diaph} mm`;
+      document.getElementById("rib-display").textContent   = rib.toFixed(2);
+      document.getElementById("pattern-badge").textContent =
+        `${label}  ·  diaph=${diaph} mm  ·  rib=${rib.toFixed(2)}`;
 
+      const gifUrl = `${GIF_BASE_URL}/${caseId}/${folder}/motion_animation.gif`;
+      const img    = document.getElementById("gif-display");
+      img.src      = gifUrl;
+      img.alt      = label;
+    }
 
-  <footer class="footer">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
+    // Init
+    onSliderChange();
+  </script>
 
-          <p>
-            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
-            <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-
-        </div>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<!-- Statcounter tracking code -->
-  
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
-
-    <!-- End of Statcounter Code -->
-
-  </body>
-  </html>
+</body>
+</html>
