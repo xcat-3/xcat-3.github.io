@@ -436,10 +436,10 @@
       <!-- Phantom diversity SVG -->
       <div class="section-title">Phantom Diversity</div>
       <div class="card" style="padding: 16px; text-align: center;">
-        <img class="phantom-svg"
-             src="static/svg/phantoms_examples_with_height.svg"
-             alt="Phantoms representing diverse demographics" />
-        <p style="margin-top:12px; font-size:0.82rem; color:#546e7a;">
+        <img src="static/svg/phantoms_examples_with_height.svg"
+             alt="Phantoms representing diverse demographics"
+             style="width:100%; max-height:320px; object-fit:contain; border-radius:8px;" />
+        <p style="margin-top:12px; font-size:0.82rem; color:#90caf9;">
           Phantoms representing diverse demographics.
         </p>
       </div>
@@ -586,9 +586,7 @@
     const DIAPH_VALUES = [5, 10, 15, 20, 25];
     const RIB_VALUES   = [0.10, 0.30, 0.50, 0.75, 1.00];
 
-    // Update this to your GitHub releases base URL once GIFs are uploaded
-    // e.g. "https://github.com/xcat-3/xcat-3.github.io/releases/download/v1.0/gifs"
-    const GIF_BASE_URL = "https://raw.githubusercontent.com/xcat-3/xcat-3.github.io/main/gifs";
+    const GIF_BASE_URL = "gifs";
 
     const LABELS = {
       "d05_r010": "Shallow / post-op (minimal motion)",
