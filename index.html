@@ -192,108 +192,78 @@
     }
     .motion-hero p { color: #90caf9; font-size: 1rem; }
 
-    .case-selector-wrap {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-    .case-selector-wrap label {
-      font-size: 0.85rem;
-      color: #78909c;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-    select {
-      background: #040b18;
-      color: #e3f2fd;
+    /* Case pill selector */
+    .case-pills { display: flex; gap: 8px; flex-wrap: wrap; }
+    .pill-btn {
+      background: #0d1f3c;
       border: 1px solid #2a5298;
-      border-radius: 8px;
-      padding: 8px 14px;
-      font-size: 0.88rem;
-      font-family: inherit;
-      cursor: pointer;
-      outline: none;
-    }
-    select:focus { border-color: #4fc3f7; }
-
-    .sliders-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      margin-top: 24px;
-    }
-    .knob-label {
-      font-size: 0.8rem;
       color: #78909c;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 6px;
-    }
-    .knob-value {
-      font-size: 2rem;
-      font-weight: 800;
-      color: #4fc3f7;
-      margin-bottom: 12px;
-    }
-    input[type="range"] {
-      -webkit-appearance: none;
-      width: 100%;
-      height: 6px;
-      background: #1e3a6e;
-      border-radius: 3px;
-      outline: none;
+      border-radius: 24px;
+      padding: 8px 18px;
+      font-size: 0.82rem;
+      font-weight: 600;
       cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s;
     }
-    input[type="range"]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: #4fc3f7;
-      box-shadow: 0 0 8px rgba(79,195,247,0.6);
-      cursor: pointer;
-    }
-    .tick-labels {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 8px;
-      font-size: 0.72rem;
-      color: #546e7a;
-    }
-    .knob-desc {
-      margin-top: 10px;
-      font-size: 0.78rem;
-      color: #546e7a;
-      line-height: 1.5;
-    }
+    .pill-btn:hover { border-color: #4fc3f7; color: #b3e5fc; }
+    .pill-btn.active { background: #1e3a6e; border-color: #4fc3f7; color: #4fc3f7; }
 
-    .gif-viewer { text-align: center; }
-    .gif-viewer img {
-      max-width: 100%;
+    /* Motion type cards */
+    .motion-type-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+      gap: 10px;
+    }
+    .motion-card {
+      background: #0d1f3c;
+      border: 1px solid #1e3a6e;
+      border-radius: 12px;
+      padding: 14px 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    .motion-card:hover  { border-color: #4fc3f7; background: #0f2240; }
+    .motion-card.active { border-color: #4fc3f7; background: #1e3a6e; }
+    .motion-card.pathological { border-left: 3px solid #ef5350; }
+    .mc-icon { font-size: 1.4rem; margin-bottom: 6px; }
+    .mc-name { font-size: 0.82rem; font-weight: 700; color: #e3f2fd; margin-bottom: 4px; }
+    .motion-card.active .mc-name { color: #4fc3f7; }
+    .mc-desc { font-size: 0.69rem; color: #546e7a; line-height: 1.4; }
+
+    /* 3-panel gif strip */
+    .gif-strip {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+    }
+    .gif-panel { text-align: center; }
+    .gif-panel img {
+      width: 100%;
       border-radius: 10px;
       border: 1px solid #1e3a6e;
+      background: #040b18;
+      min-height: 100px;
     }
-    .pattern-badge {
+    .gif-label {
+      margin-top: 10px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #78909c;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .motion-badge {
       display: inline-block;
       background: #1e3a6e;
       color: #81d4fa;
       border-radius: 20px;
-      padding: 5px 16px;
-      font-size: 0.8rem;
+      padding: 6px 18px;
+      font-size: 0.82rem;
       font-weight: 600;
-      margin-top: 14px;
+      margin-bottom: 20px;
     }
-
-    .table-wrap { overflow-x: auto; }
-    table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
-    thead tr { background: #1e3a6e; }
-    thead th { padding: 12px 16px; text-align: left; color: #81d4fa; font-weight: 700; }
-    tbody tr { border-bottom: 1px solid #1a2d50; transition: background 0.15s; }
-    tbody tr:hover { background: #0f2240; }
-    tbody td { padding: 11px 16px; color: #cfd8dc; }
-    tbody td:first-child, tbody td:nth-child(2) { color: #4fc3f7; font-weight: 700; white-space: nowrap; }
 
     footer {
       background: #040b18;
@@ -307,9 +277,10 @@
     @media (max-width: 640px) {
       .hero-card, .motion-hero { padding: 32px 20px; }
       .hero-card h1, .motion-hero h1 { font-size: 1.5rem; }
-      .sliders-grid { grid-template-columns: 1fr; gap: 28px; }
       .topnav { padding: 0 16px; }
       .topnav-brand { font-size: 0.95rem; }
+      .gif-strip { grid-template-columns: 1fr; }
+      .motion-type-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
@@ -432,80 +403,41 @@
 
       <div class="motion-hero">
         <h1>🫁 Respiratory Motion Explorer</h1>
-        <p>Patient-specific parametric breathing simulation inspired by 4D XCAT.</p>
+        <p>Select a phantom and breathing pattern to explore three synchronized anatomical views.</p>
       </div>
 
-      <div class="section-title">Breathing Parameters</div>
+      <div class="section-title">Phantom Case</div>
       <div class="card">
-        <div class="case-selector-wrap">
-          <label for="case-select">Patient Case</label>
-          <select id="case-select" onchange="onSliderChange()">
-            <option value="XCAT3_Chest_0001">XCAT3_Chest_0001</option>
-          </select>
-        </div>
-
-        <p style="color:#90caf9; font-size:0.88rem; margin-top:18px; line-height:1.6;">
-          Adjust the two knobs to explore different breathing patterns — from end-inspiration to end-expiration.
-        </p>
-
-        <div class="sliders-grid">
-          <div>
-            <div class="knob-label">Diaphragm Excursion</div>
-            <div class="knob-value" id="diaph-display">15 mm</div>
-            <input type="range" id="diaph-slider" min="0" max="4" step="1" value="2" oninput="onSliderChange()" />
-            <div class="tick-labels">
-              <span>5 mm</span><span>10 mm</span><span>15 mm</span><span>20 mm</span><span>25 mm</span>
-            </div>
-            <p class="knob-desc">
-              How far the diaphragm moves toward expiration.<br>
-              Low → shallow / restricted &nbsp;·&nbsp; High → deep / COPD-like.
-            </p>
-          </div>
-          <div>
-            <div class="knob-label">Rib Rotation Scale</div>
-            <div class="knob-value" id="rib-display">1.00</div>
-            <input type="range" id="rib-slider" min="0" max="4" step="1" value="4" oninput="onSliderChange()" />
-            <div class="tick-labels">
-              <span>0.10</span><span>0.30</span><span>0.50</span><span>0.75</span><span>1.00</span>
-            </div>
-            <p class="knob-desc">
-              Fraction of maximum rib rotation applied.<br>
-              Low → belly breathing &nbsp;·&nbsp; High → chest-wall-dominant.
-            </p>
-          </div>
+        <div class="case-pills">
+          <button class="pill-btn active" onclick="selectCase('XCAT3_Chest_00001', this)">XCAT3_Chest_00001</button>
+          <button class="pill-btn" onclick="selectCase('XCAT3_Chest_00002', this)">XCAT3_Chest_00002</button>
+          <button class="pill-btn" onclick="selectCase('XCAT3_Chest_00003', this)">XCAT3_Chest_00003</button>
+          <button class="pill-btn" onclick="selectCase('XCAT3_Chest_00004', this)">XCAT3_Chest_00004</button>
+          <button class="pill-btn" onclick="selectCase('XCAT3_Chest_00005', this)">XCAT3_Chest_00005</button>
         </div>
       </div>
+
+      <div class="section-title">Breathing Pattern</div>
+      <div class="motion-type-grid" id="motion-grid"></div>
 
       <div class="section-title">Motion Visualization</div>
-      <div class="card gif-viewer">
-        <img id="gif-display" src="" alt="Select parameters above" />
-        <div id="pattern-badge" class="pattern-badge">—</div>
-      </div>
-
-      <div class="section-title">Clinical Reference — Parameter Guide</div>
-      <div class="card" style="padding: 0; overflow: hidden;">
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Diaphragm (mm)</th>
-                <th>Rib Scale</th>
-                <th>Breathing Pattern</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>5</td><td>0.1</td><td>Shallow / restricted (post-op, pain-limited)</td></tr>
-              <tr><td>5</td><td>1.0</td><td>Chest-dominant (diaphragm paresis)</td></tr>
-              <tr><td>8</td><td>0.4</td><td>Quiet resting breathing</td></tr>
-              <tr><td>10</td><td>0.5</td><td>Mild tidal breathing</td></tr>
-              <tr><td>15</td><td>1.0</td><td>Normal tidal breathing ← reference</td></tr>
-              <tr><td>18</td><td>0.3</td><td>COPD-like (limited chest wall, hyperinflated)</td></tr>
-              <tr><td>20</td><td>0.2</td><td>Diaphragm-dominant (COPD / belly breathing)</td></tr>
-              <tr><td>20</td><td>0.9</td><td>Athletic / deep breathing</td></tr>
-              <tr><td>7</td><td>0.4</td><td>Restricted / pulmonary fibrosis</td></tr>
-              <tr><td>25</td><td>1.0</td><td>Forceful exhale / maximum effort</td></tr>
-            </tbody>
-          </table>
+      <div class="card">
+        <div style="text-align:center;">
+          <span class="motion-badge" id="motion-badge"></span>
+        </div>
+        <div class="gif-strip">
+          <div class="gif-panel">
+            <img id="gif-full"  src="" alt="Full Anatomy" />
+            <div class="gif-label">Full Anatomy</div>
+          </div>
+          <div class="gif-panel">
+            <img id="gif-tubes" src="" alt="Pulmonary Vessels" />
+            <div class="gif-label">Pulmonary Vessels</div>
+          </div>
+          <div class="gif-panel">
+            <img id="gif-ribs"  src="" alt="Rib Cage" />
+            <div class="gif-label">Rib Cage</div>
+          </div>
         </div>
       </div>
 
@@ -526,64 +458,60 @@
       });
     }
 
-    const DIAPH_VALUES = [5, 10, 15, 20, 25];
-    const RIB_VALUES   = [0.10, 0.30, 0.50, 0.75, 1.00];
-    const GIF_BASE_URL = "gifs";
+    const MOTION_TYPES = [
+      { id: "quiet_resting",      name: "Quiet Resting",       icon: "😴", desc: "Minimal excursion, ~300 mL tidal volume",       cls: "" },
+      { id: "normal_tidal",       name: "Normal Tidal",         icon: "🫁", desc: "Reference tidal breathing, ~500 mL",            cls: "" },
+      { id: "chest_dominant",     name: "Chest Dominant",       icon: "🫀", desc: "Chest wall primary, reduced diaphragm motion",  cls: "" },
+      { id: "diaphragm_dominant", name: "Diaphragm Dominant",   icon: "🔄", desc: "Diaphragm primary, minimal rib excursion",      cls: "" },
+      { id: "deep_full",          name: "Deep Full",            icon: "🌬️", desc: "Full respiratory excursion, ~1500 mL",         cls: "" },
+      { id: "maximum_effort",     name: "Maximum Effort",       icon: "⚡", desc: "Forced vital capacity maneuver",                cls: "" },
+      { id: "shallow_restricted", name: "Shallow Restricted",   icon: "🔒", desc: "Post-op / pain-limited, ~200 mL tidal",        cls: "pathological" },
+      { id: "restricted_like",    name: "Restrictive Pattern",  icon: "⛔", desc: "Pulmonary fibrosis-like motion pattern",       cls: "pathological" },
+      { id: "copd_like",          name: "COPD-like",            icon: "🫧", desc: "Hyperinflated barrel chest, limited chest wall", cls: "pathological" },
+    ];
 
-    const LABELS = {
-      "d05_r010": "Shallow / post-op (minimal motion)",
-      "d05_r030": "Restricted / fibrosis-like",
-      "d05_r050": "Mild chest, low diaphragm",
-      "d05_r075": "Moderate chest expansion",
-      "d05_r100": "Chest-dominant (diaphragm paresis)",
-      "d10_r010": "Low diaphragm, minimal rib",
-      "d10_r030": "Quiet resting breathing",
-      "d10_r050": "Quiet tidal breathing",
-      "d10_r075": "Moderate tidal breathing",
-      "d10_r100": "Moderate chest + diaphragm",
-      "d15_r010": "Diaphragm-only, normal depth",
-      "d15_r030": "Mixed — moderate diaphragm",
-      "d15_r050": "Mixed tidal breathing",
-      "d15_r075": "Normal tidal breathing",
-      "d15_r100": "Normal tidal (full rib)",
-      "d20_r010": "Diaphragm-dominant (COPD / belly breathing)",
-      "d20_r030": "COPD-like (limited chest wall)",
-      "d20_r050": "Mixed deep breathing",
-      "d20_r075": "Deep / high-capacity breathing",
-      "d20_r100": "Athletic / deep breath",
-      "d25_r010": "Max diaphragm, frozen chest",
-      "d25_r030": "Max diaphragm, minimal rib",
-      "d25_r050": "Max diaphragm, moderate rib",
-      "d25_r075": "Deep forceful breath",
-      "d25_r100": "Forceful exhale (max effort)",
-    };
+    let currentCase   = "XCAT3_Chest_00001";
+    let currentMotion = "normal_tidal";
 
-    function folderName(di, ri) {
-      const d = String(DIAPH_VALUES[di]).padStart(2, "0");
-      const r = RIB_VALUES[ri].toFixed(2).replace(".", "");
-      return `d${d}_r${r}`;
+    function buildMotionGrid() {
+      const grid = document.getElementById("motion-grid");
+      grid.innerHTML = "";
+      MOTION_TYPES.forEach(m => {
+        const card = document.createElement("div");
+        card.className = "motion-card" + (m.cls ? " " + m.cls : "") + (m.id === currentMotion ? " active" : "");
+        card.onclick = () => selectMotion(m.id, card);
+        card.innerHTML = `<div class="mc-icon">${m.icon}</div>
+          <div class="mc-name">${m.name}</div>
+          <div class="mc-desc">${m.desc}</div>`;
+        grid.appendChild(card);
+      });
     }
 
-    function onSliderChange() {
-      const di     = parseInt(document.getElementById("diaph-slider").value);
-      const ri     = parseInt(document.getElementById("rib-slider").value);
-      const caseId = document.getElementById("case-select").value;
-      const diaph  = DIAPH_VALUES[di];
-      const rib    = RIB_VALUES[ri];
-      const folder = folderName(di, ri);
-      const label  = LABELS[folder] || folder;
-
-      document.getElementById("diaph-display").textContent = `${diaph} mm`;
-      document.getElementById("rib-display").textContent   = rib.toFixed(2);
-      document.getElementById("pattern-badge").textContent =
-        `${label}  ·  diaph=${diaph} mm  ·  rib=${rib.toFixed(2)}`;
-
-      const img = document.getElementById("gif-display");
-      img.src   = `${GIF_BASE_URL}/${caseId}/${folder}/motion_animation.gif`;
-      img.alt   = label;
+    function updateGifs() {
+      const base = `gifs/${currentCase}/${currentMotion}`;
+      document.getElementById("gif-full").src  = `${base}/full_anatomy_animation.gif`;
+      document.getElementById("gif-tubes").src = `${base}/pulmonary_tubes_animation.gif`;
+      document.getElementById("gif-ribs").src  = `${base}/ribs_animation.gif`;
+      const m = MOTION_TYPES.find(x => x.id === currentMotion);
+      document.getElementById("motion-badge").textContent = `${m.icon}  ${m.name}  ·  ${m.desc}`;
     }
 
-    onSliderChange();
+    function selectCase(caseId, btn) {
+      currentCase = caseId;
+      document.querySelectorAll(".pill-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      updateGifs();
+    }
+
+    function selectMotion(motionId, card) {
+      currentMotion = motionId;
+      document.querySelectorAll(".motion-card").forEach(c => c.classList.remove("active"));
+      card.classList.add("active");
+      updateGifs();
+    }
+
+    buildMotionGrid();
+    updateGifs();
   </script>
 
 </body>
