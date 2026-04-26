@@ -232,11 +232,11 @@
     .motion-card.active .mc-name { color: #4fc3f7; }
     .mc-desc { font-size: 0.69rem; color: #546e7a; line-height: 1.4; }
 
-    /* 3-panel gif strip */
+    /* 3-panel gif strip — stacked vertically so each gif gets full width */
     .gif-strip {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
     }
     .gif-panel { text-align: center; }
     .gif-panel img {
@@ -279,8 +279,7 @@
       .hero-card h1, .motion-hero h1 { font-size: 1.5rem; }
       .topnav { padding: 0 16px; }
       .topnav-brand { font-size: 0.95rem; }
-      .gif-strip { grid-template-columns: 1fr; }
-      .motion-type-grid { grid-template-columns: repeat(2, 1fr); }
+.motion-type-grid { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
