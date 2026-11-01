@@ -6,8 +6,34 @@ Live at: [https://xcat-3.github.io](https://xcat-3.github.io)
 
 ## Features
 
-- **Phantoms tab** — Interactive 3D phantom viewer with demographic filtering. Browse 2,500+ computational phantoms derived from real CT scans.
-- **Motion tab** — Parametric respiratory motion explorer. Two knobs control diaphragm excursion (5–25 mm) and rib rotation scale (0.1–1.0), loading precomputed breathing animation GIFs for 25 parameter combinations per patient case.
+- **Phantoms tab** — Title page with authors, affiliations and links (paper, code, phantom requests); abstract; video overview; an interactive 3D anatomy viewer with sex / race / BMI / age filtering over 2,500+ computational phantoms derived from real CT scans; a phantom-diversity figure; and a copyable BibTeX entry.
+- **4D Motion tab** — Respiratory motion explorer. Pick one of five chest phantom cases (`XCAT3_Chest_00001`–`00005`) and one of nine breathing patterns (quiet resting, normal tidal, chest dominant, diaphragm dominant, deep full, maximum effort, and the pathological shallow restricted, restrictive and COPD-like patterns). Three precomputed animated views (full anatomy, pulmonary vessels, rib cage) update together; click a view to open it full size.
+
+## Repository layout
+
+| Path | Purpose |
+| --- | --- |
+| `index.html` | The page: markup and the small motion-explorer / copy-button script. |
+| `static/css/xcat.css` | Page theme (design tokens at the top: colours, type, widths). |
+| `webapp.html`, `assets/` | The bundled 3D viewer, embedded as an iframe. `assets/` is build output; do not edit by hand. |
+| `static/css/webapp-theme.css` | Restyles the viewer's controls to match the page without touching the bundle. |
+| `static/phantoms/`, `static/draco/` | Phantom meshes (`.glb`), their index (`database.json`) and the Draco decoder. |
+| `gifs/<case>/<pattern>/` | `full_anatomy_animation.gif`, `pulmonary_tubes_animation.gif`, `ribs_animation.gif` for each case and pattern. |
+| `static/svg/` | Phantom-diversity figure. |
+
+## Run locally
+
+The viewer loads assets with absolute paths, so serve the repository root:
+
+```
+python3 -m http.server 8000
+```
+
+Then open <http://localhost:8000/> (the motion tab is at `/#motion`).
+
+## Design
+
+Editorial academic styling: off-white page, charcoal text, a single navy accent, Source Serif 4 for headings and Inter for text and controls. No framework or build step; the page is plain HTML and CSS.
 
 ## Paper
 

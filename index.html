@@ -192,15 +192,15 @@
           <p class="motion-badge" id="motion-badge"></p>
           <div class="gif-strip">
             <figure class="gif-panel">
-              <img id="gif-full"  src="" alt="Full Anatomy" />
+              <a href="#" target="_blank" rel="noopener" title="Open full size"><img id="gif-full"  src="" alt="Full Anatomy" /></a>
               <figcaption class="gif-label">Full Anatomy</figcaption>
             </figure>
             <figure class="gif-panel">
-              <img id="gif-tubes" src="" alt="Pulmonary Vessels" />
+              <a href="#" target="_blank" rel="noopener" title="Open full size"><img id="gif-tubes" src="" alt="Pulmonary Vessels" /></a>
               <figcaption class="gif-label">Pulmonary Vessels</figcaption>
             </figure>
             <figure class="gif-panel">
-              <img id="gif-ribs"  src="" alt="Rib Cage" />
+              <a href="#" target="_blank" rel="noopener" title="Open full size"><img id="gif-ribs"  src="" alt="Rib Cage" /></a>
               <figcaption class="gif-label">Rib Cage</figcaption>
             </figure>
           </div>
@@ -257,6 +257,7 @@
       document.getElementById("gif-full").src  = `${base}/full_anatomy_animation.gif`;
       document.getElementById("gif-tubes").src = `${base}/pulmonary_tubes_animation.gif`;
       document.getElementById("gif-ribs").src  = `${base}/ribs_animation.gif`;
+      document.querySelectorAll(".gif-panel img").forEach(i => i.parentElement.href = i.getAttribute("src"));
       const m = MOTION_TYPES.find(x => x.id === currentMotion);
       document.getElementById("motion-badge").textContent = `${m.name}  ·  ${m.desc}`;
     }

@@ -34,3 +34,19 @@ form button:hover { background: #162c49; }
 }
 .model { background-color: #1a1a1a; }
 #phantom-id { text-shadow: 0 1px 3px rgba(0,0,0,.6); }
+
+/* Fit exactly inside the host iframe: no double scrollbars, no gap under the canvas. */
+@media (min-width: 769px) {
+  html, body { height: 100%; overflow: hidden; }
+  .container { height: 100vh; min-height: 0; }
+  .controls { box-sizing: border-box; height: 100%; min-height: 0; overflow-y: auto; }
+  .model { height: 100%; min-height: 0; overflow: hidden; }
+  .model > canvas { display: block; min-height: 0; }
+}
+.controls > form label > span { font-size: 0.875rem; }
+.controls > form { font-size: 1rem; }
+form input, form select, .details select { font-size: 0.9375rem; }
+.details { font-size: 0.9375rem; }
+.details button { font-size: 0.875rem; }
+#phantom-id { font-size: 1rem; }
+#phantom-id { color: #fff; }
