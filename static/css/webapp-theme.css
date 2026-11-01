@@ -1,0 +1,36 @@
+/* Restyles the bundled 3D viewer's controls to match the project page.
+   Loaded after the bundle's own CSS; no DOM or script changes. */
+:root { --ink:#1b1d22; --ink-2:#4b4f58; --rule:#e2e0d9; --rule-strong:#c9c6bc; --accent:#1f3a5f; --panel:#f6f5f1; }
+body, .controls, .controls > form, .details, .citation, #phantom-id { font-family: "Inter", -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; color: var(--ink); }
+.controls { background: var(--panel); border-right: 1px solid var(--rule); padding: 28px 24px; max-width: 320px; min-width: 260px; }
+.controls > form { height: auto; justify-content: flex-start; font: 500 0.9375rem/1.3 "Inter", sans-serif; margin-bottom: 20px; }
+.controls > form > * { width: 100%; margin: 0 0 16px; }
+.controls > form label { display: flex; flex-direction: column; gap: 6px; }
+.controls > form label > span { font-size: 0.8125rem; font-weight: 500; color: var(--ink-2); }
+form input, form select, .details select {
+  font: 400 0.875rem "Inter", sans-serif; color: var(--ink);
+  width: 100%; margin: 0; min-height: 38px; padding: 7px 12px;
+  background: #fff; border: 1px solid var(--rule-strong); border-radius: 2px;
+}
+form select:focus-visible, .controls button:focus-visible, .controls input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+form button {
+  font: 500 0.9375rem "Inter", sans-serif; width: 100%; padding: 11px 16px;
+  background: var(--accent); border-radius: 2px; transition: background .15s;
+}
+form button:hover { background: #162c49; }
+.details { font: 400 0.875rem/1.5 "Inter", sans-serif; }
+.details .buttons { display: flex; gap: 8px; flex-wrap: wrap; }
+.details button {
+  font: 500 0.8125rem "Inter", sans-serif; color: var(--ink);
+  padding: 8px 12px; background: #fff; border: 1px solid var(--rule-strong); border-radius: 2px; cursor: pointer;
+}
+.details button:hover { border-color: var(--accent); color: var(--accent); }
+#phantom-id { font: 500 0.875rem "Inter", sans-serif; }
+@media (max-width: 768px) {
+  .controls { max-width: none !important; min-height: 0 !important; border-right: 0 !important; border-bottom: 1px solid var(--rule) !important; }
+  .container { min-height: 0 !important; }
+  .model { height: min(100vw, 480px) !important; min-height: 320px !important; }
+  .controls > form { margin-bottom: 8px; }
+}
+.model { background-color: #1a1a1a; }
+#phantom-id { text-shadow: 0 1px 3px rgba(0,0,0,.6); }

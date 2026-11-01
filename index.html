@@ -18,372 +18,133 @@
 
   <title>XCAT-3</title>
   <link rel="icon" href="https://cvit.duke.edu/files/2021/07/cropped-icon-cvit-32x32.jpg" sizes="32x32">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="static/css/xcat.css">
   <script defer src="static/js/fontawesome.all.min.js"></script>
 
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      background: #060d1f;
-      color: #e8eaf6;
-      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      min-height: 100vh;
-    }
-
-    a { color: #4fc3f7; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    .topnav {
-      background: #040b18;
-      border-bottom: 1px solid #1e3a6e;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 40px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .topnav-brand {
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: #4fc3f7;
-      padding: 16px 0;
-      letter-spacing: 0.03em;
-    }
-    .topnav-tabs { display: flex; gap: 4px; }
-    .tab-btn {
-      background: transparent;
-      border: none;
-      color: #78909c;
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      padding: 18px 20px;
-      border-bottom: 3px solid transparent;
-      transition: color 0.2s, border-color 0.2s;
-      font-family: inherit;
-    }
-    .tab-btn:hover { color: #b3e5fc; }
-    .tab-btn.active { color: #4fc3f7; border-bottom-color: #4fc3f7; }
-
-    .tab-section { display: none; }
-    .tab-section.active { display: block; }
-
-    .content-wrap {
-      max-width: 960px;
-      margin: 0 auto;
-      padding: 48px 24px 80px;
-    }
-
-    .hero-card {
-      background: linear-gradient(135deg, #0a1628 0%, #0d2347 50%, #0a1628 100%);
-      border: 1px solid #1e3a6e;
-      border-radius: 16px;
-      padding: 52px 48px 44px;
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    .hero-card h1 {
-      font-size: 2rem;
-      font-weight: 800;
-      background: linear-gradient(90deg, #4fc3f7, #81d4fa, #b3e5fc);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      line-height: 1.3;
-      margin-bottom: 20px;
-    }
-    .authors {
-      font-size: 0.9rem;
-      color: #90caf9;
-      line-height: 2;
-      margin-bottom: 10px;
-    }
-    .authors a { color: #81d4fa; }
-    .affiliation {
-      font-size: 0.82rem;
-      color: #546e7a;
-      margin-bottom: 24px;
-      line-height: 1.6;
-    }
-    .btn-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #1e3a6e;
-      color: #e3f2fd;
-      border: 1px solid #2a5298;
-      border-radius: 20px;
-      padding: 8px 20px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      transition: background 0.2s, border-color 0.2s;
-    }
-    .btn:hover { background: #2a5298; border-color: #4fc3f7; text-decoration: none; }
-
-    .section-title {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #e3f2fd;
-      border-left: 4px solid #4fc3f7;
-      padding-left: 14px;
-      margin: 40px 0 20px;
-    }
-
-    .card {
-      background: #0d1f3c;
-      border: 1px solid #1e3a6e;
-      border-radius: 14px;
-      padding: 28px 32px;
-    }
-
-    .abstract-text {
-      font-size: 0.92rem;
-      color: #b0bec5;
-      line-height: 1.8;
-    }
-    .abstract-text a { color: #4fc3f7; }
-
-    .viewer-frame {
-      width: 100%;
-      height: 600px;
-      border: none;
-      border-radius: 10px;
-    }
-    @media (max-width: 768px) {
-      .viewer-frame { height: 520px; }
-    }
-    .viewer-note {
-      margin-top: 12px;
-      font-size: 0.8rem;
-      color: #546e7a;
-      text-align: center;
-    }
-
-    pre {
-      background: #040b18;
-      border: 1px solid #1e3a6e;
-      border-radius: 10px;
-      padding: 20px 24px;
-      font-size: 0.8rem;
-      color: #90caf9;
-      overflow-x: auto;
-      line-height: 1.7;
-    }
-
-    .motion-hero {
-      background: linear-gradient(135deg, #0a1628 0%, #0d2347 50%, #0a1628 100%);
-      border: 1px solid #1e3a6e;
-      border-radius: 16px;
-      padding: 44px 48px 36px;
-      text-align: center;
-      margin-bottom: 40px;
-    }
-    .motion-hero h1 {
-      font-size: 2rem;
-      font-weight: 800;
-      background: linear-gradient(90deg, #4fc3f7, #81d4fa, #b3e5fc);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 12px;
-    }
-    .motion-hero p { color: #90caf9; font-size: 1rem; }
-
-    /* Case pill selector */
-    .case-pills { display: flex; gap: 8px; flex-wrap: wrap; }
-    .pill-btn {
-      background: #0d1f3c;
-      border: 1px solid #2a5298;
-      color: #78909c;
-      border-radius: 24px;
-      padding: 8px 18px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      cursor: pointer;
-      font-family: inherit;
-      transition: all 0.2s;
-    }
-    .pill-btn:hover { border-color: #4fc3f7; color: #b3e5fc; }
-    .pill-btn.active { background: #1e3a6e; border-color: #4fc3f7; color: #4fc3f7; }
-
-    /* Motion type cards */
-    .motion-type-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
-      gap: 10px;
-    }
-    .motion-card {
-      background: #0d1f3c;
-      border: 1px solid #1e3a6e;
-      border-radius: 12px;
-      padding: 14px 12px;
-      cursor: pointer;
-      transition: all 0.2s;
-      text-align: center;
-    }
-    .motion-card:hover  { border-color: #4fc3f7; background: #0f2240; }
-    .motion-card.active { border-color: #4fc3f7; background: #1e3a6e; }
-    .motion-card.pathological { border-left: 3px solid #ef5350; }
-    .mc-icon { font-size: 1.4rem; margin-bottom: 6px; }
-    .mc-name { font-size: 0.82rem; font-weight: 700; color: #e3f2fd; margin-bottom: 4px; }
-    .motion-card.active .mc-name { color: #4fc3f7; }
-    .mc-desc { font-size: 0.69rem; color: #546e7a; line-height: 1.4; }
-
-    /* 3-panel gif strip — stacked vertically so each gif gets full width */
-    .gif-strip {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-    .gif-panel { text-align: center; }
-    .gif-panel img {
-      width: 100%;
-      border-radius: 10px;
-      border: 1px solid #1e3a6e;
-      background: #040b18;
-      min-height: 100px;
-    }
-    .gif-label {
-      margin-top: 10px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: #78909c;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-    }
-    .motion-badge {
-      display: inline-block;
-      background: #1e3a6e;
-      color: #81d4fa;
-      border-radius: 20px;
-      padding: 6px 18px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      margin-bottom: 20px;
-    }
-
-    footer {
-      background: #040b18;
-      border-top: 1px solid #1e3a6e;
-      text-align: center;
-      padding: 28px 24px;
-      font-size: 0.82rem;
-      color: #37474f;
-    }
-
-    @media (max-width: 640px) {
-      .hero-card, .motion-hero { padding: 32px 20px; }
-      .hero-card h1, .motion-hero h1 { font-size: 1.5rem; }
-      .topnav { padding: 0 16px; }
-      .topnav-brand { font-size: 0.95rem; }
-.motion-type-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-  </style>
 </head>
 <body>
 
-  <nav class="topnav">
-    <div class="topnav-brand">🫁 XCAT-3</div>
-    <div class="topnav-tabs">
-      <button class="tab-btn active" onclick="showTab('phantoms')">Phantoms</button>
-      <button class="tab-btn"        onclick="showTab('motion')">4D Motion</button>
+  <nav class="topnav" aria-label="Sections">
+    <div class="wrap">
+      <div class="topnav-brand">XCAT-3</div>
+      <div class="topnav-tabs">
+        <button class="tab-btn active" data-tab="phantoms" onclick="showTab('phantoms')">Phantoms</button>
+        <button class="tab-btn" data-tab="motion" onclick="showTab('motion')">4D Motion</button>
+      </div>
     </div>
   </nav>
 
   <div id="tab-phantoms" class="tab-section active">
-    <div class="content-wrap">
+    <div class="wrap">
 
-      <div class="hero-card">
+      <header class="masthead">
         <h1>XCAT-3: A Comprehensive Library of Personalized Digital Twins Derived from CT Scans</h1>
-        <div class="authors">
+        <p class="authors">
           <a href="https://lavsendahal.github.io/" target="_blank">Lavsen Dahal</a>,
-          <a href="#" target="_blank">Mobina Ghojoghnejad</a>,
-          <a href="#" target="_blank">Liesbeth Vancoillie</a>,
+          <a href="#" target="_blank" tabindex="-1">Mobina Ghojoghnejad</a>,
+          <a href="#" target="_blank" tabindex="-1">Liesbeth Vancoillie</a>,
           <a href="https://scholars.duke.edu/person/dhrubajyoti.ghosh" target="_blank">Dhrubajyoti Ghosh</a>,
-          <a href="#" target="_blank">Yubraj Bhandari</a>,
-          <a href="#" target="_blank">David Kim</a>,
-          <a href="#" target="_blank">Fong Chi Ho</a>,
+          <a href="#" target="_blank" tabindex="-1">Yubraj Bhandari</a>,
+          <a href="#" target="_blank" tabindex="-1">David Kim</a>,
+          <a href="#" target="_blank" tabindex="-1">Fong Chi Ho</a>,
           <a href="https://fitushar.netlify.app/" target="_blank">Fakrul Islam Tushar</a>,
           <a href="https://scholars.duke.edu/person/sheng.luo/" target="_blank">Sheng Luo</a>,
           <a href="https://www.kylelafata.com/" target="_blank">Kyle J. Lafata</a>,
-          <a href="#" target="_blank">Ehsan Abadi</a>,
+          <a href="#" target="_blank" tabindex="-1">Ehsan Abadi</a>,
           <a href="https://scholars.duke.edu/person/ehsan.samei" target="_blank">Ehsan Samei</a>,
           <a href="https://scholars.duke.edu/person/joseph.lo" target="_blank">Joseph Y. Lo</a><sup>+</sup>,
           <a href="https://scholars.duke.edu/person/paul.segars" target="_blank">W. Paul Segars</a><sup>+</sup>
-        </div>
-        <div class="affiliation">
+        </p>
+        <p class="affiliation">
           Center for Virtual Imaging Trials · Carl E. Ravin Advanced Imaging Laboratories<br>
           Department of Radiology · Duke University School of Medicine · Durham, NC 27708
-          <br><small><sup>+</sup>Co-Senior Authors</small>
-        </div>
+          <small><sup>+</sup>Co-Senior Authors</small>
+        </p>
         <div class="btn-row">
-          <a class="btn" href="https://www.sciencedirect.com/science/article/abs/pii/S1361841525001835" target="_blank">
-            <i class="fas fa-file-pdf"></i> Paper
+          <a class="btn primary" href="https://www.sciencedirect.com/science/article/abs/pii/S1361841525001835" target="_blank" rel="noopener">
+            <i class="fas fa-file-pdf" aria-hidden="true"></i> Paper
           </a>
-          <a class="btn" href="https://gitlab.oit.duke.edu/cvit-public/dukeseg_public" target="_blank">
-            <i class="fab fa-github"></i> Code
+          <a class="btn" href="https://gitlab.oit.duke.edu/cvit-public/dukeseg_public" target="_blank" rel="noopener">
+            <i class="fab fa-github" aria-hidden="true"></i> Code
           </a>
-          <a class="btn" href="https://cvit.duke.edu/resources/" target="_blank">
-            <i class="fas fa-database"></i> Request Phantoms
+          <a class="btn" href="https://cvit.duke.edu/resources/" target="_blank" rel="noopener">
+            <i class="fas fa-database" aria-hidden="true"></i> Request Phantoms
           </a>
         </div>
-      </div>
+      </header>
 
-      <div class="section-title">Abstract</div>
-      <div class="card">
-        <p class="abstract-text">
+      <section class="section" id="abstract">
+        <h2 class="section-title">Abstract</h2>
+        <div class="section-body prose">
+          <p class="abstract-text">
           Virtual Imaging Trials (VIT) offer a cost-effective and scalable approach for evaluating medical imaging technologies.
           Computational phantoms, which mimic real patient anatomy and physiology, play a central role in VIT. However, current
           phantom libraries face limitations in sample size and diversity. This study presents a framework for creating realistic
           computational phantoms using a suite of four deep learning segmentation models, with three forms of automated quality
           control. The result is a release of over 2,500 computational phantoms with up to 140 structures, available in both
           voxelized and surface mesh formats. Phantoms may be requested at
-          <a href="https://cvit.duke.edu/resources/" target="_blank">cvit.duke.edu/resources</a>.
-        </p>
-      </div>
-
-      <div class="section-title">Video Overview</div>
-      <div class="card" style="padding: 16px;">
-        <div style="position:relative; width:100%; padding-top:56.25%;">
-          <iframe
-            style="position:absolute; top:0; left:0; width:100%; height:100%; border:none; border-radius:8px;"
-            src="https://www.youtube.com/embed/mfswVPG3TH0"
-            title="XCAT-3 Overview"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-          </iframe>
+          <a href="https://cvit.duke.edu/resources/" target="_blank" rel="noopener">cvit.duke.edu/resources</a>.
+          </p>
         </div>
-        <p style="margin-top:12px; font-size:0.8rem; color:#546e7a; text-align:center;">
-          This video overview was automatically generated by <a href="https://notebooklm.google.com" target="_blank" style="color:#4fc3f7;">NotebookLM</a> based on our manuscript.
-        </p>
-      </div>
+      </section>
 
-      <div class="section-title">Interactive Anatomy Display</div>
-      <div class="card" style="padding: 16px;">
-        <iframe class="viewer-frame" src="webapp.html"></iframe>
-        <p class="viewer-note">
-          For best experience, use Chrome on a desktop or laptop. Refresh if the viewer does not load.
-        </p>
-      </div>
+      <section class="section" id="video">
+        <h2 class="section-title">Video Overview</h2>
+        <div class="section-body">
+          <figure>
+            <div class="video-frame">
+              <iframe
+                src="https://www.youtube.com/embed/mfswVPG3TH0"
+                title="XCAT-3 Overview"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+              </iframe>
+            </div>
+            <figcaption>
+              This video overview was automatically generated by <a href="https://notebooklm.google.com" target="_blank" rel="noopener">NotebookLM</a> based on our manuscript.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
 
-      <div class="section-title">Phantom Diversity</div>
-      <div style="background:#f5f7fa; border-radius:14px; padding:16px; text-align:center;">
-        <img src="static/svg/phantoms_examples_with_height.svg"
-             alt="Phantoms representing diverse demographics"
-             style="width:100%; height:500px; object-fit:cover; object-position:0% 0%; border-radius:8px;" />
-        <p style="margin-top:12px; font-size:0.82rem; color:#37474f;">
-          Phantoms representing diverse demographics.
-        </p>
-      </div>
+      <section class="section wide" id="viewer">
+        <h2 class="section-title">Interactive Anatomy Display</h2>
+        <div class="section-body">
+          <iframe class="viewer-frame" src="webapp.html" title="Interactive Anatomy Display"></iframe>
+          <p class="note">
+            For best experience, use Chrome on a desktop or laptop. Refresh if the viewer does not load.
+          </p>
+        </div>
+      </section>
 
-      <div class="section-title">BibTeX</div>
-      <p style="font-size:0.9rem; color:#90caf9; margin-bottom:16px;">
-        If you find this work useful, please consider citing:
-      </p>
-      <pre>@article{dahal2025xcat,
+      <section class="section wide" id="diversity">
+        <h2 class="section-title">Phantom Diversity</h2>
+        <div class="section-body">
+          <figure>
+            <div class="figure-plate">
+              <img src="static/svg/phantoms_examples_with_height.svg"
+                   alt="Phantoms representing diverse demographics" />
+            </div>
+            <figcaption>
+              Phantoms representing diverse demographics.
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="section" id="bibtex-section">
+        <h2 class="section-title">BibTeX</h2>
+        <div class="section-body">
+          <p class="cite-lead">
+            If you find this work useful, please consider citing:
+          </p>
+          <div class="code-block">
+            <button type="button" class="copy-btn" id="copy-bibtex">Copy</button>
+            <pre><code id="bibtex">@article{dahal2025xcat,
   title     = {XCAT 3.0: A comprehensive library of personalized digital twins derived from CT scans},
   author    = {Dahal, Lavsen and Ghojoghnejad, Mobina and Vancoillie, Liesbeth and
                Ghosh, Dhrubajyoti and Bhandari, Yubraj and Kim, David and Ho, Fong Chi and
@@ -392,50 +153,56 @@
   pages     = {103636},
   year      = {2025},
   publisher = {Elsevier}
-}</pre>
+}</code></pre>
+          </div>
+        </div>
+      </section>
 
     </div>
   </div>
 
   <div id="tab-motion" class="tab-section">
-    <div class="content-wrap">
+    <div class="wrap">
 
-      <div class="motion-hero">
-        <h1>🫁 Respiratory Motion Explorer</h1>
+      <header class="page-head">
+        <h1>Respiratory Motion Explorer</h1>
         <p>Select a phantom and breathing pattern to explore three synchronized anatomical views.</p>
-      </div>
+      </header>
 
-      <div class="section-title">Phantom Case</div>
-      <div class="card">
-        <div class="case-pills">
-          <button class="pill-btn active" onclick="selectCase('XCAT3_Chest_00001', this)">XCAT3_Chest_00001</button>
-          <button class="pill-btn" onclick="selectCase('XCAT3_Chest_00002', this)">XCAT3_Chest_00002</button>
-          <button class="pill-btn" onclick="selectCase('XCAT3_Chest_00003', this)">XCAT3_Chest_00003</button>
-          <button class="pill-btn" onclick="selectCase('XCAT3_Chest_00004', this)">XCAT3_Chest_00004</button>
-          <button class="pill-btn" onclick="selectCase('XCAT3_Chest_00005', this)">XCAT3_Chest_00005</button>
-        </div>
-      </div>
-
-      <div class="section-title">Breathing Pattern</div>
-      <div class="motion-type-grid" id="motion-grid"></div>
-
-      <div class="section-title">Motion Visualization</div>
-      <div class="card">
-        <div style="text-align:center;">
-          <span class="motion-badge" id="motion-badge"></span>
-        </div>
-        <div class="gif-strip">
-          <div class="gif-panel">
-            <img id="gif-full"  src="" alt="Full Anatomy" />
-            <div class="gif-label">Full Anatomy</div>
+      <div class="explorer">
+        <div class="controls-panel">
+          <div class="control-group">
+            <h2 class="control-title">Phantom Case</h2>
+            <div class="case-list" id="case-list">
+              <button class="pill-btn active" onclick="selectCase('XCAT3_Chest_00001', this)">XCAT3_Chest_00001</button>
+              <button class="pill-btn" onclick="selectCase('XCAT3_Chest_00002', this)">XCAT3_Chest_00002</button>
+              <button class="pill-btn" onclick="selectCase('XCAT3_Chest_00003', this)">XCAT3_Chest_00003</button>
+              <button class="pill-btn" onclick="selectCase('XCAT3_Chest_00004', this)">XCAT3_Chest_00004</button>
+              <button class="pill-btn" onclick="selectCase('XCAT3_Chest_00005', this)">XCAT3_Chest_00005</button>
+            </div>
           </div>
-          <div class="gif-panel">
-            <img id="gif-tubes" src="" alt="Pulmonary Vessels" />
-            <div class="gif-label">Pulmonary Vessels</div>
+          <div class="control-group">
+            <h2 class="control-title">Breathing Pattern</h2>
+            <div class="motion-type-grid" id="motion-grid"></div>
           </div>
-          <div class="gif-panel">
-            <img id="gif-ribs"  src="" alt="Rib Cage" />
-            <div class="gif-label">Rib Cage</div>
+        </div>
+
+        <div class="results">
+          <h2 class="control-title">Motion Visualization</h2>
+          <p class="motion-badge" id="motion-badge"></p>
+          <div class="gif-strip">
+            <figure class="gif-panel">
+              <img id="gif-full"  src="" alt="Full Anatomy" />
+              <figcaption class="gif-label">Full Anatomy</figcaption>
+            </figure>
+            <figure class="gif-panel">
+              <img id="gif-tubes" src="" alt="Pulmonary Vessels" />
+              <figcaption class="gif-label">Pulmonary Vessels</figcaption>
+            </figure>
+            <figure class="gif-panel">
+              <img id="gif-ribs"  src="" alt="Rib Cage" />
+              <figcaption class="gif-label">Rib Cage</figcaption>
+            </figure>
           </div>
         </div>
       </div>
@@ -444,7 +211,7 @@
   </div>
 
   <footer>
-    &copy; Lavsen Dahal | Duke University
+    <div class="wrap">&copy; Lavsen Dahal | Duke University</div>
   </footer>
 
   <script>
@@ -453,7 +220,7 @@
       document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
       document.getElementById("tab-" + name).classList.add("active");
       document.querySelectorAll(".tab-btn").forEach(b => {
-        if (b.textContent.trim().toLowerCase() === name) b.classList.add("active");
+        if (b.dataset.tab === name) b.classList.add("active");
       });
     }
 
@@ -476,12 +243,11 @@
       const grid = document.getElementById("motion-grid");
       grid.innerHTML = "";
       MOTION_TYPES.forEach(m => {
-        const card = document.createElement("div");
+        const card = document.createElement("button");
+        card.type = "button";
         card.className = "motion-card" + (m.cls ? " " + m.cls : "") + (m.id === currentMotion ? " active" : "");
         card.onclick = () => selectMotion(m.id, card);
-        card.innerHTML = `<div class="mc-icon">${m.icon}</div>
-          <div class="mc-name">${m.name}</div>
-          <div class="mc-desc">${m.desc}</div>`;
+        card.innerHTML = `<span class="mc-name">${m.name}</span><span class="mc-desc">${m.desc}</span>`;
         grid.appendChild(card);
       });
     }
@@ -492,7 +258,7 @@
       document.getElementById("gif-tubes").src = `${base}/pulmonary_tubes_animation.gif`;
       document.getElementById("gif-ribs").src  = `${base}/ribs_animation.gif`;
       const m = MOTION_TYPES.find(x => x.id === currentMotion);
-      document.getElementById("motion-badge").textContent = `${m.icon}  ${m.name}  ·  ${m.desc}`;
+      document.getElementById("motion-badge").textContent = `${m.name}  ·  ${m.desc}`;
     }
 
     function selectCase(caseId, btn) {
@@ -511,7 +277,19 @@
 
     buildMotionGrid();
     updateGifs();
+  
+    document.getElementById("copy-bibtex").addEventListener("click", async e => {
+      const btn = e.currentTarget, text = document.getElementById("bibtex").textContent;
+      try { await navigator.clipboard.writeText(text); }
+      catch (_) { const r = document.createRange(); r.selectNodeContents(document.getElementById("bibtex")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); document.execCommand("copy"); s.removeAllRanges(); }
+      btn.textContent = "Copied";
+      setTimeout(() => btn.textContent = "Copy", 1800);
+    });
+    if (location.hash === "#motion") showTab("motion");
   </script>
+
+</body>
+</html>
 
 </body>
 </html>
